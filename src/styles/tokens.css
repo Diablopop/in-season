@@ -1,0 +1,41 @@
+/**
+ * Design tokens. Every color, size, and rule weight in the app resolves here.
+ * Direction: a modern scientific textbook plate — see PRD §8.6.
+ */
+:root {
+  /* Ground and ink. Pure white so the aged paper in the artwork reads as paper
+     rather than as discoloration. Ink is near-black, very slightly warm. */
+  --color-page: #ffffff;
+  --color-ink: #1a1714;
+  --color-ink-soft: #5c554d;
+  --color-rule: #d8d2c8;
+
+  /* Verdicts. Always paired with a text label — never color alone (§8.4). */
+  --color-peak: #12693c;
+  --color-in-season: #55701c;
+  --color-storage: #8a6a1f;
+  --color-imported: #2a5c8a;
+  --color-skip: #6b6b6b;
+
+  /* Source Serif 4 and Inter are the intended faces and must be self-hosted
+     (§8.6). Until the files are bundled these fall back gracefully. */
+  --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  /* Structure comes from rules and whitespace. There are no shadows. */
+  --rule-hairline: 1px;
+  --rule-medium: 2px;
+}

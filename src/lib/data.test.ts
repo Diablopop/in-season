@@ -2,6 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { resolve } from './season'
+import { resolveEntry, standoutVarieties } from './varieties'
 import type { Fruit, RegionItem, Verdict } from './types'
 
 const FRUITS_DIR = 'src/data/fruits'
@@ -44,9 +45,13 @@ describe('catalog', () => {
     })
   })
 
-  it('has artwork for every fruit slug', () => {
-    const art = readdirSync('public/img/fruits/192')
-    fruits.forEach((fr) => expect(art).toContain(`${fr.slug}.png`))
+  it('has artwork at both sizes for every fruit slug', () => {
+    const small = readdirSync('public/img/fruits/192')
+    const large = readdirSync('public/img/fruits/640')
+    fruits.forEach((fr) => {
+      expect(small, `${fr.slug} missing 192px art`).toContain(`${fr.slug}.webp`)
+      expect(large, `${fr.slug} missing 640px art`).toContain(`${fr.slug}.webp`)
+    })
   })
 })
 
@@ -111,5 +116,37 @@ describe('varieties', () => {
     fruits.forEach((fr) => {
       if (fr.varietyNotes) expect(fr.varieties?.length ?? 0).toBeGreaterThan(0)
     })
+  })
+})
+
+describe('standout varieties', () => {
+  const i = fruitFiles.indexOf('apple.json')
+  const apple = fruits[i]
+  const item = items[i]
+  const best = (md: string) => resolveEntry(item, md).verdict
+
+  it('lifts the card to the best variety verdict', () => {
+    // Apples as a category are only in-season in late August; Gala is at peak,
+    // and a good Gala is genuinely on the shelf.
+    expect(resolve(item.windows, '08-20').verdict).toBe('in-season')
+    expect(resolveEntry(item, '08-20').verdict).toBe('peak')
+  })
+
+  it('names only varieties whose own window covers today', () => {
+    expect(standoutVarieties(apple, item, '08-20', best('08-20'))).toEqual(['Gala'])
+  })
+
+  it('names the varieties that lead in autumn', () => {
+    expect(standoutVarieties(apple, item, '11-10', best('11-10'))).toContain('Pink Lady')
+  })
+
+  it('names nobody when every variety is merely inheriting storage', () => {
+    // The regression: inheriting the fruit verdict is not standing out.
+    expect(standoutVarieties(apple, item, '02-15', best('02-15'))).toEqual([])
+  })
+
+  it('stays silent for fruits that do not opt in', () => {
+    const j = fruitFiles.indexOf('peach.json')
+    expect(standoutVarieties(fruits[j], items[j], '07-01', 'peak')).toEqual([])
   })
 })
