@@ -1,0 +1,34 @@
+{
+  "slug": "avocado",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://californiaavocado.com/avocado101/are-california-avocados-available-year-round/",
+    "https://www.earlsorganic.com/blog/california-avocados"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "01-16",
+      "end": "03-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "04-01",
+      "end": "07-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "08-01",
+      "end": "09-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "imported",
+      "start": "10-01",
+      "end": "01-15",
+      "origin": "Mexico and Peru"
+    }
+  ]
+}

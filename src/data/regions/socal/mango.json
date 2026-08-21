@@ -1,0 +1,17 @@
+{
+  "slug": "mango",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.seasonalfoodguide.org/veg/mangoes/southern-california",
+    "https://mmafarms.com/guides/mango-season-usa/"
+  ],
+  "windows": [
+    {
+      "verdict": "imported",
+      "start": "03-01",
+      "end": "09-30",
+      "origin": "Mexico and Peru",
+      "note": "Mexican fruit is at its best in late spring"
+    }
+  ]
+}

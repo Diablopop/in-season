@@ -1,0 +1,28 @@
+{
+  "slug": "cherimoya",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.seasonalfoodguide.org/veg/cherimoyas/southern-california",
+    "https://crfg.org/homepage/library/fruitfacts/cherimoya/"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "11-01",
+      "end": "12-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "01-01",
+      "end": "04-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "05-01",
+      "end": "05-31",
+      "origin": "California"
+    }
+  ]
+}

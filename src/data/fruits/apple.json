@@ -1,0 +1,18 @@
+{
+  "slug": "apple",
+  "name": "Apple",
+  "botanicalName": "Malus domestica",
+  "category": "fruit",
+  "selection": "Pick one that feels heavy for its size with taut, unbroken skin. Press gently near the shoulder — it should not give at all. Dull skin and a slightly shriveled stem end mean long storage.",
+  "storage": "Refrigerate. Apples last months cold and go mealy within a week on the counter.",
+  "ripensAfterPicking": false,
+  "varietyNotes": true,
+  "varieties": [
+    { "slug": "gala", "name": "Gala", "image": null, "note": "Mild and sweet, thin skin. The first good apple of the season." },
+    { "slug": "honeycrisp", "name": "Honeycrisp", "image": null, "note": "Coarse, shattering texture. Best eaten within weeks of harvest." },
+    { "slug": "red-delicious", "name": "Red Delicious", "image": null, "note": "Thick skin, soft flesh. Fades faster in storage than most." },
+    { "slug": "granny-smith", "name": "Granny Smith", "image": null, "note": "Hard and tart. Holds its texture in storage better than any other common variety." },
+    { "slug": "fuji", "name": "Fuji", "image": null, "note": "Dense and very sweet. Stores well." },
+    { "slug": "pink-lady", "name": "Pink Lady", "image": null, "note": "Late harvest, tart and firm. The last fresh apple of the year." }
+  ]
+}

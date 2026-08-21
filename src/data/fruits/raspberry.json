@@ -1,0 +1,9 @@
+{
+  "slug": "raspberry",
+  "name": "Raspberry",
+  "botanicalName": "Rubus idaeus",
+  "category": "fruit",
+  "selection": "The most fragile berry in the store. Check the underside of the container for stains, and look for uniform color with no white or moldy fruit.",
+  "storage": "Refrigerate unwashed and eat within a day or two.",
+  "ripensAfterPicking": false
+}

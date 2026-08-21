@@ -1,0 +1,9 @@
+{
+  "slug": "cantaloupe",
+  "name": "Cantaloupe",
+  "botanicalName": "Cucumis melo",
+  "category": "fruit",
+  "selection": "Smell the blossom end — a ripe melon is fragrant and sweet there. The stem end should be a smooth, slightly sunken scar, not a cut stub, which means it was pulled before it was ready.",
+  "storage": "Counter until fragrant, then refrigerate. Cut melon keeps three days covered.",
+  "ripensAfterPicking": true
+}

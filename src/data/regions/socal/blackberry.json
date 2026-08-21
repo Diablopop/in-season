@@ -1,0 +1,34 @@
+{
+  "slug": "blackberry",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.thepacker.com/markets/fruit/its-berry-time-strawberry-blueberry-bushberry-outlook-strong",
+    "https://www.freshfruitportal.com/news/2026/07/28/cali-berry/"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "05-01",
+      "end": "05-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "06-01",
+      "end": "09-15",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "09-16",
+      "end": "09-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "imported",
+      "start": "11-01",
+      "end": "03-31",
+      "origin": "Mexico and Chile"
+    }
+  ]
+}

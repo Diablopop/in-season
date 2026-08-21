@@ -1,0 +1,35 @@
+{
+  "slug": "pear",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://cdn.agclassroom.org/ca/resources/gardens/seasonalchart.pdf",
+    "https://www.fresnocountyca.gov/files/sharedassets/county/v/1/public-works-and-planning/community-development-division/26803-harvest.pdf"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "07-16",
+      "end": "07-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "08-01",
+      "end": "09-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "10-01",
+      "end": "10-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "storage",
+      "start": "11-01",
+      "end": "04-30",
+      "origin": "California and Washington",
+      "note": "held in controlled-atmosphere storage since fall"
+    }
+  ]
+}

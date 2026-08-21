@@ -1,0 +1,17 @@
+{
+  "slug": "lime",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://mexiconewsdaily.com/food/a-guide-to-mexican-fruits-when-where-and-why-to-buy-them/",
+    "https://www.seasonalfoodguide.org/veg/limes/southern-california"
+  ],
+  "windows": [
+    {
+      "verdict": "imported",
+      "start": "01-01",
+      "end": "12-31",
+      "origin": "Mexico",
+      "note": "essentially all limes in US stores are Mexican"
+    }
+  ]
+}

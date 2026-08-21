@@ -1,0 +1,28 @@
+{
+  "slug": "apricot",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.fresnocountyca.gov/files/sharedassets/county/v/1/public-works-and-planning/community-development-division/26803-harvest.pdf",
+    "https://www.organicgrown.com/blog/california-stone-fruit-season-starts-with-promises-of-a-sweet-summer"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "04-16",
+      "end": "05-15",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "05-16",
+      "end": "07-15",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "07-16",
+      "end": "07-31",
+      "origin": "California"
+    }
+  ]
+}

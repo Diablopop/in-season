@@ -1,0 +1,22 @@
+{
+  "slug": "lemon",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.venturacoastal.com/growing-seasons",
+    "https://cns.ucdavis.edu/news/its-citrus-season"
+  ],
+  "windows": [
+    {
+      "verdict": "peak",
+      "start": "11-01",
+      "end": "03-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "04-01",
+      "end": "10-31",
+      "origin": "California"
+    }
+  ]
+}

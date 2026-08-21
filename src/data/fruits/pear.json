@@ -1,0 +1,30 @@
+{
+  "slug": "pear",
+  "name": "Pear",
+  "botanicalName": "Pyrus communis",
+  "category": "fruit",
+  "selection": "Check the neck — press near the stem with a thumb. If it gives, it is ripe. The body stays firm long after the flesh inside is ready.",
+  "storage": "Ripen on the counter, then refrigerate. Pears ripen from the inside out and are picked deliberately unripe.",
+  "ripensAfterPicking": true,
+  "varietyNotes": true,
+  "varieties": [
+    {
+      "slug": "bartlett",
+      "name": "Bartlett",
+      "image": null,
+      "note": "Turns yellow as it ripens — the only common pear that signals readiness by color."
+    },
+    {
+      "slug": "bosc",
+      "name": "Bosc",
+      "image": null,
+      "note": "Firm and dense with a long neck. Holds its shape when cooked."
+    },
+    {
+      "slug": "anjou",
+      "name": "Anjou",
+      "image": null,
+      "note": "Stays green when ripe. Judge by the neck, never by color."
+    }
+  ]
+}

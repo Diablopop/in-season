@@ -1,0 +1,28 @@
+{
+  "slug": "orange-navel",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.venturacoastal.com/growing-seasons",
+    "https://cns.ucdavis.edu/news/its-citrus-season"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "11-01",
+      "end": "11-15",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "11-16",
+      "end": "01-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "02-01",
+      "end": "05-31",
+      "origin": "California"
+    }
+  ]
+}

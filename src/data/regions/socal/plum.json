@@ -1,0 +1,28 @@
+{
+  "slug": "plum",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.fresnocountyca.gov/files/sharedassets/county/v/1/public-works-and-planning/community-development-division/26803-harvest.pdf",
+    "https://www.organicgrown.com/blog/california-stone-fruit-season-starts-with-promises-of-a-sweet-summer"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "05-16",
+      "end": "05-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "06-01",
+      "end": "08-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "09-01",
+      "end": "09-30",
+      "origin": "California"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "slug": "kumquat",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.venturacoastal.com/growing-seasons",
+    "https://cns.ucdavis.edu/news/its-citrus-season"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "11-01",
+      "end": "11-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "12-01",
+      "end": "03-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "04-01",
+      "end": "04-30",
+      "origin": "California"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "pluot",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.fresnocountyca.gov/files/sharedassets/county/v/1/public-works-and-planning/community-development-division/26803-harvest.pdf",
+    "https://www.organicgrown.com/blog/california-stone-fruit-season-starts-with-promises-of-a-sweet-summer"
+  ],
+  "windows": [
+    {
+      "verdict": "peak",
+      "start": "06-16",
+      "end": "08-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "09-01",
+      "end": "09-15",
+      "origin": "California"
+    }
+  ]
+}

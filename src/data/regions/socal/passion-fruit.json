@@ -1,0 +1,27 @@
+{
+  "slug": "passion-fruit",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://greenifygenius.com/when-is-passion-fruit-in-season/"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "05-01",
+      "end": "06-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "07-01",
+      "end": "08-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "09-01",
+      "end": "09-30",
+      "origin": "California"
+    }
+  ]
+}

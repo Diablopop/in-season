@@ -1,0 +1,27 @@
+{
+  "slug": "watermelon",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://cdn.agclassroom.org/ca/resources/gardens/seasonalchart.pdf"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "06-01",
+      "end": "06-15",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "06-16",
+      "end": "08-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "09-01",
+      "end": "09-30",
+      "origin": "California"
+    }
+  ]
+}

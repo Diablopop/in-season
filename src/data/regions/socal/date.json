@@ -1,0 +1,23 @@
+{
+  "slug": "date",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.fresnocountyca.gov/files/sharedassets/county/v/1/public-works-and-planning/community-development-division/26803-harvest.pdf",
+    "https://californiagrown.org/blog/winter-fruit/"
+  ],
+  "windows": [
+    {
+      "verdict": "peak",
+      "start": "09-16",
+      "end": "12-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "storage",
+      "start": "01-01",
+      "end": "09-15",
+      "origin": "California",
+      "note": "cured and held from the fall harvest"
+    }
+  ]
+}

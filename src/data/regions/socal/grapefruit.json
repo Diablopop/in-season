@@ -1,0 +1,22 @@
+{
+  "slug": "grapefruit",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.venturacoastal.com/growing-seasons",
+    "https://cns.ucdavis.edu/news/its-citrus-season"
+  ],
+  "windows": [
+    {
+      "verdict": "peak",
+      "start": "01-01",
+      "end": "05-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "06-01",
+      "end": "08-31",
+      "origin": "California"
+    }
+  ]
+}

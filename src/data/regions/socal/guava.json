@@ -1,0 +1,27 @@
+{
+  "slug": "guava",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.seasonalfoodguide.org/veg/guava/southern-california"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "10-01",
+      "end": "10-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "11-01",
+      "end": "01-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "02-01",
+      "end": "02-28",
+      "origin": "California"
+    }
+  ]
+}

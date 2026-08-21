@@ -1,0 +1,29 @@
+{
+  "slug": "strawberry",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.thepacker.com/markets/fruit/its-berry-time-strawberry-blueberry-bushberry-outlook-strong",
+    "https://www.freshfruitportal.com/news/2026/07/28/cali-berry/",
+    "https://www.thepacker.com/news/industry/california-strawberries-head-peak-season"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "12-16",
+      "end": "03-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "04-01",
+      "end": "06-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "07-01",
+      "end": "09-30",
+      "origin": "California"
+    }
+  ]
+}

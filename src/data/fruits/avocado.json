@@ -1,0 +1,9 @@
+{
+  "slug": "avocado",
+  "name": "Avocado",
+  "botanicalName": "Persea americana",
+  "category": "fruit",
+  "selection": "Ignore color and use weight and give — a ripe Hass yields to gentle pressure in the palm, not the fingertips. Flick off the small stem nub: green underneath means good, brown means overripe.",
+  "storage": "Counter until it gives, then refrigerate for up to three days.",
+  "ripensAfterPicking": true
+}

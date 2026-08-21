@@ -1,0 +1,28 @@
+{
+  "slug": "orange-valencia",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.venturacoastal.com/growing-seasons",
+    "https://cns.ucdavis.edu/news/its-citrus-season"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "03-01",
+      "end": "04-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "05-01",
+      "end": "09-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "10-01",
+      "end": "11-15",
+      "origin": "California"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "slug": "cherry",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.fresnocountyca.gov/files/sharedassets/county/v/1/public-works-and-planning/community-development-division/26803-harvest.pdf",
+    "https://www.organicgrown.com/blog/california-stone-fruit-season-starts-with-promises-of-a-sweet-summer"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "04-16",
+      "end": "04-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "05-01",
+      "end": "06-15",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "06-16",
+      "end": "06-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "imported",
+      "start": "12-01",
+      "end": "01-31",
+      "origin": "Chile"
+    }
+  ]
+}

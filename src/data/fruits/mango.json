@@ -1,0 +1,9 @@
+{
+  "slug": "mango",
+  "name": "Mango",
+  "botanicalName": "Mangifera indica",
+  "category": "fruit",
+  "selection": "Judge by smell and give at the stem end, never by color — red blush means nothing about ripeness. A ripe mango is fragrant at the stem.",
+  "storage": "Counter until it gives, then refrigerate for up to three days.",
+  "ripensAfterPicking": true
+}

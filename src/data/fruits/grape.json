@@ -1,0 +1,9 @@
+{
+  "slug": "grape",
+  "name": "Grape",
+  "botanicalName": "Vitis vinifera",
+  "category": "fruit",
+  "selection": "Check where the grapes meet the stem — green and firmly attached is good, brown and shedding is old. The stems should be pliable, not brittle.",
+  "storage": "Refrigerate unwashed in the perforated bag they came in.",
+  "ripensAfterPicking": false
+}

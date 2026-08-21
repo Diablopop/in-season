@@ -1,0 +1,29 @@
+{
+  "slug": "kiwi",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://californiagrown.org/blog/winter-fruit/",
+    "https://cdn.agclassroom.org/ca/resources/gardens/seasonalchart.pdf"
+  ],
+  "windows": [
+    {
+      "verdict": "peak",
+      "start": "10-16",
+      "end": "12-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "storage",
+      "start": "01-01",
+      "end": "05-31",
+      "origin": "California",
+      "note": "held from the fall harvest"
+    },
+    {
+      "verdict": "imported",
+      "start": "06-01",
+      "end": "09-30",
+      "origin": "New Zealand and Chile"
+    }
+  ]
+}

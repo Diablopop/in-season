@@ -1,0 +1,49 @@
+{
+  "slug": "apple",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://www.visitcalifornia.com/experience/apple-picking-california/",
+    "https://visitoakglen.com/oak-glen-apple-picking-guide-2026/",
+    "https://usapple.org/news-resources/apple-storage-backgrounder",
+    "https://nwhort.org/controlled-atmosphere-storage/",
+    "https://www.ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=75112",
+    "https://www.foodforestnursery.com/growing-guides/fruit-trees/apple-trees/apple-ripening-chart/"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "08-16",
+      "end": "08-31",
+      "origin": "California",
+      "note": "first of the new crop"
+    },
+    {
+      "verdict": "peak",
+      "start": "09-01",
+      "end": "10-31",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "11-01",
+      "end": "11-30",
+      "origin": "California",
+      "note": "late varieties still coming off the tree"
+    },
+    {
+      "verdict": "storage",
+      "start": "12-01",
+      "end": "08-15",
+      "origin": "Washington and California",
+      "note": "held in controlled-atmosphere storage since fall"
+    }
+  ],
+  "varieties": {
+    "gala": { "windows": [{ "verdict": "peak", "start": "08-16", "end": "09-15" }] },
+    "honeycrisp": { "windows": [{ "verdict": "peak", "start": "09-16", "end": "10-15" }] },
+    "red-delicious": { "windows": [{ "verdict": "peak", "start": "10-01", "end": "10-15" }] },
+    "granny-smith": { "windows": [{ "verdict": "peak", "start": "10-16", "end": "11-15" }] },
+    "fuji": { "windows": [{ "verdict": "peak", "start": "10-16", "end": "11-15" }] },
+    "pink-lady": { "windows": [{ "verdict": "peak", "start": "11-01", "end": "11-30" }] }
+  }
+}

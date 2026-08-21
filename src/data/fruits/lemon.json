@@ -1,0 +1,9 @@
+{
+  "slug": "lemon",
+  "name": "Lemon",
+  "botanicalName": "Citrus limon",
+  "category": "fruit",
+  "selection": "Heavy for its size with smooth, thin skin — thick-skinned lemons have less juice. Deep yellow rather than greenish, unless it is a Meyer.",
+  "storage": "Counter for a week, refrigerated for a month.",
+  "ripensAfterPicking": false
+}

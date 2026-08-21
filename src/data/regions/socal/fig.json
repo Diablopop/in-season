@@ -1,0 +1,29 @@
+{
+  "slug": "fig",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://cdn.agclassroom.org/ca/resources/gardens/seasonalchart.pdf",
+    "https://www.seasonalfoodguide.org/veg/figs/southern-california"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "06-01",
+      "end": "06-30",
+      "origin": "California",
+      "note": "the early breba crop"
+    },
+    {
+      "verdict": "peak",
+      "start": "08-01",
+      "end": "10-15",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "10-16",
+      "end": "10-31",
+      "origin": "California"
+    }
+  ]
+}

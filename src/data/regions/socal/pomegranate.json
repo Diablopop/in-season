@@ -1,0 +1,29 @@
+{
+  "slug": "pomegranate",
+  "lastReviewed": "2026-08-21",
+  "sources": [
+    "https://californiagrown.org/blog/winter-fruit/",
+    "https://cdn.agclassroom.org/ca/resources/gardens/seasonalchart.pdf"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "09-01",
+      "end": "09-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "peak",
+      "start": "10-01",
+      "end": "11-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "storage",
+      "start": "12-01",
+      "end": "01-31",
+      "origin": "California",
+      "note": "held from the fall harvest"
+    }
+  ]
+}
