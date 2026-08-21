@@ -13,7 +13,7 @@ export function FruitCard({ entry, md }: { entry: CatalogEntry; md: MonthDay }) 
     : note(verdict, window)
 
   return (
-    <article className="card">
+    <a className="card" href={`#/${entry.fruit.slug}`}>
       <div className="card__plate">
         {/* Decorative: the name and verdict are already in text. */}
         <img
@@ -26,6 +26,6 @@ export function FruitCard({ entry, md }: { entry: CatalogEntry; md: MonthDay }) 
       </div>
       <h2 className="card__name">{entry.fruit.name}</h2>
       <p className="card__note">{detail}</p>
-    </article>
+    </a>
   )
 }

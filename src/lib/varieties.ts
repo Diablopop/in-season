@@ -5,6 +5,15 @@ const varietyWindows = (item: RegionItem): SeasonWindow[] =>
   Object.values(item.varieties ?? {}).flatMap((v) => v.windows)
 
 /**
+ * Every window that contributes to a card's verdict. The season strip draws from
+ * this so the chart cannot disagree with the verdict printed above it.
+ */
+export const entryWindows = (item: RegionItem): SeasonWindow[] => [
+  ...item.windows,
+  ...varietyWindows(item),
+]
+
+/**
  * The verdict a card shows, counting varieties.
  *
  * Apples in late August are only "in season" as a category, but Gala is already
@@ -15,7 +24,7 @@ export function resolveEntry(
   item: RegionItem,
   md: MonthDay,
 ): { verdict: Verdict; window: SeasonWindow | null } {
-  return resolve([...item.windows, ...varietyWindows(item)], md)
+  return resolve(entryWindows(item), md)
 }
 
 /**

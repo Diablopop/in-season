@@ -2,10 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>In Season</title>
+    <meta name="description" content="What fruit is worth buying in Southern California right now." />
+
+    <!-- Light only, declared three ways so neither OS applies its own dark treatment. -->
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#ffffff" />
-    <title>In Season</title>
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <!-- iOS ignores the manifest for icons and needs this. -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="In Season" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="In Season" />
+    <meta property="og:description" content="What fruit is worth buying in Southern California right now." />
+    <meta property="og:image" content="/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <div id="root"></div>

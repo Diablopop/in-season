@@ -1,0 +1,45 @@
+.strip { margin: var(--space-4) 0 0; }
+
+/* A ruled figure, the way a chart is set on a textbook page. */
+.strip__cells {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  height: 18px;
+  border: var(--rule-hairline) solid var(--color-ink);
+}
+
+.strip__cell { background: var(--cell); }
+
+/* Hairline between months, not between half-months — 24 rules would read as noise. */
+.strip__cell:nth-child(2n + 1):not(:first-child) {
+  border-left: var(--rule-hairline) solid var(--color-rule);
+}
+
+.strip__now {
+  outline: var(--rule-medium) solid var(--color-ink);
+  outline-offset: -1px;
+}
+
+.strip__months {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-top: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-ink-soft);
+  text-align: center;
+}
+
+.strip__caption {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-xs);
+  color: var(--color-ink-soft);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

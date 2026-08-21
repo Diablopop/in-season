@@ -1,6 +1,8 @@
 import './App.css'
+import { FruitDetail } from './components/FruitDetail'
 import { VerdictGroup } from './components/VerdictGroup'
 import { catalog, region } from './lib/catalog'
+import { useRoute, useScrollReset } from './lib/router'
 import { toMonthDay } from './lib/season'
 import { resolveEntry } from './lib/varieties'
 import type { Verdict } from './lib/types'
@@ -16,6 +18,10 @@ const LONG_DATE = new Intl.DateTimeFormat('en-US', {
 export function App() {
   const today = new Date()
   const md = toMonthDay(today)
+  const route = useRoute()
+  useScrollReset(route)
+
+  const selected = route ? catalog.find((e) => e.fruit.slug === route) : undefined
 
   const grouped = ORDER.map((verdict) => ({
     verdict,
@@ -33,14 +39,18 @@ export function App() {
         </p>
       </header>
 
-      {grouped.map((g) => (
-        <VerdictGroup
-          key={g.verdict}
-          verdict={g.verdict}
-          entries={g.entries}
-          md={md}
-        />
-      ))}
+      {selected ? (
+        <FruitDetail entry={selected} md={md} />
+      ) : (
+        grouped.map((g) => (
+          <VerdictGroup
+            key={g.verdict}
+            verdict={g.verdict}
+            entries={g.entries}
+            md={md}
+          />
+        ))
+      )}
 
       <p className="colophon">
         Harvest windows are drawn from California agricultural calendars and

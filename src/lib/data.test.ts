@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { resolve } from './season'
-import { resolveEntry, standoutVarieties } from './varieties'
+import { entryWindows, resolveEntry, standoutVarieties } from './varieties'
 import type { Fruit, RegionItem, Verdict } from './types'
 
 const FRUITS_DIR = 'src/data/fruits'
@@ -148,5 +148,18 @@ describe('standout varieties', () => {
   it('stays silent for fruits that do not opt in', () => {
     const j = fruitFiles.indexOf('peach.json')
     expect(standoutVarieties(fruits[j], items[j], '07-01', 'peak')).toEqual([])
+  })
+})
+
+describe('season strip', () => {
+  it('never contradicts the verdict shown above it', () => {
+    const days = everyDay()
+    fruitFiles.forEach((_, i) => {
+      days.forEach((md) => {
+        expect(resolve(entryWindows(items[i]), md).verdict).toBe(
+          resolveEntry(items[i], md).verdict,
+        )
+      })
+    })
   })
 })
