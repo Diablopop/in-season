@@ -24,6 +24,22 @@ const slugsFrom = (dir) =>
     : []
 
 const masters = new Map(slugsFrom(MASTERS))
+
+// A misspelled master silently emits an orphan file and leaves the placeholder
+// showing, which is very easy to miss. Fail loudly instead.
+const known = new Set(
+  readdirSync(join(ROOT, 'src/data/fruits'))
+    .filter((f) => f.endsWith('.json'))
+    .map((f) => f.replace('.json', '')),
+)
+const orphans = [...masters.keys()].filter((slug) => !known.has(slug))
+if (orphans.length) {
+  console.error(
+    `\nNo fruit matches these masters: ${orphans.join(', ')}\n` +
+      `Rename them to a slug in src/data/fruits/.\n`,
+  )
+  process.exit(1)
+}
 const placeholders = new Map(slugsFrom(PLACEHOLDERS))
 
 // Masters win wherever they exist.
