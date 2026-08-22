@@ -3,24 +3,39 @@
 /* A ruled figure, the way a chart is set on a textbook page. */
 .strip__cells {
   display: grid;
-  grid-template-columns: repeat(24, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   height: 18px;
 }
 
-.strip__cell { background: var(--cell); }
+/* Both halves of a month in a single paint, so there is no join to seam.
+   Two adjacent boxes would: 1fr columns land on fractional pixels and the page
+   shows through the join wherever the device pixel ratio is above 1. */
+.strip__month {
+  position: relative;
+  background: linear-gradient(
+    to right,
+    var(--first) 0 50%,
+    var(--second) 50% 100%
+  );
+}
 
-/* Every cell is divided, not just month boundaries. Some verdict pairs sit at
-   ~1.2:1 against each other — pomegranate runs peak straight into storage — and
-   without a rule that edge is invisible. */
-.strip__cell:not(:first-child) {
+/* Divided between months only. A mid-month verdict change reads as a colour
+   edge with no rule to help it. */
+.strip__month:not(:first-child) {
   border-left: var(--rule-hairline) solid var(--color-page);
 }
 
-
 .strip__now {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
   outline: var(--rule-medium) solid var(--color-ink);
   outline-offset: -1px;
 }
+
+.strip__now--first { left: 0; }
+.strip__now--second { right: 0; }
 
 .strip__months {
   display: grid;

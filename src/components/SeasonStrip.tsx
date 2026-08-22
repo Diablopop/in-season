@@ -52,12 +52,26 @@ export function SeasonStrip({
   return (
     <figure className="strip">
       <div className="strip__cells" role="img" aria-label={summarize(verdicts)}>
-        {verdicts.map((v, i) => (
+        {/* One element per month, its two halves painted by a hard-stop gradient.
+            Two adjacent boxes would seam: 1fr columns land on fractional pixels
+            and the page shows through the join at device pixel ratios above 1. */}
+        {MONTH_INITIALS.map((_, m) => (
           <div
-            key={i}
-            className={`strip__cell${i === nowIndex ? ' strip__now' : ''}`}
-            style={{ '--cell': FILL[v] } as CSSProperties}
-          />
+            key={m}
+            className="strip__month"
+            style={
+              {
+                '--first': FILL[verdicts[m * 2]],
+                '--second': FILL[verdicts[m * 2 + 1]],
+              } as CSSProperties
+            }
+          >
+            {Math.floor(nowIndex / 2) === m && (
+              <span
+                className={`strip__now strip__now--${nowIndex % 2 === 0 ? 'first' : 'second'}`}
+              />
+            )}
+          </div>
         ))}
       </div>
       <div className="strip__months" aria-hidden="true">
