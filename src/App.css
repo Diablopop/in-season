@@ -5,8 +5,6 @@
 }
 
 .masthead {
-  border-bottom: var(--rule-medium) solid var(--color-ink);
-  padding-bottom: var(--space-3);
   margin-bottom: var(--space-8);
 }
 
