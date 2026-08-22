@@ -17,7 +17,12 @@ export function VerdictGroup({
   return (
     <section
       className="group"
-      style={{ '--verdict-color': `var(--color-${verdict})` } as CSSProperties}
+      style={
+        {
+          '--verdict-color': `var(--color-${verdict})`,
+          '--verdict-fill': `var(--fill-${verdict})`,
+        } as CSSProperties
+      }
     >
       <div className="group__head">
         <h2 className="group__label">{label(verdict)}</h2>

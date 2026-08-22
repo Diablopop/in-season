@@ -10,9 +10,16 @@
 
 .strip__cell { background: var(--cell); }
 
-/* Hairline between months, not between half-months — 24 rules would read as noise. */
+/* Every cell is divided, not just month boundaries. Some verdict pairs sit at
+   ~1.2:1 against each other — pomegranate runs peak straight into storage — and
+   without a rule that edge is invisible. */
+.strip__cell:not(:first-child) {
+  border-left: var(--rule-hairline) solid var(--color-page);
+}
+
+/* Month boundaries stay heavier so the year is still readable at a glance. */
 .strip__cell:nth-child(2n + 1):not(:first-child) {
-  border-left: var(--rule-hairline) solid var(--color-rule);
+  border-left: var(--rule-hairline) solid var(--color-ink);
 }
 
 .strip__now {

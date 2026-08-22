@@ -18,10 +18,12 @@
   white-space: nowrap;
 }
 
+/* The rule takes the bright fill; the label beside it takes the darker text
+   variant. Same hue, and only the text has a contrast obligation. */
 .group__rule {
   flex: 1;
   height: var(--rule-medium);
-  background: var(--verdict-color);
+  background: var(--verdict-fill);
 }
 
 .group__grid {

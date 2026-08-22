@@ -15,11 +15,11 @@ const SAMPLES: MonthDay[] = Array.from({ length: 24 }, (_, i) => {
 })
 
 const FILL: Record<Verdict, string> = {
-  peak: 'var(--color-peak)',
-  'in-season': 'var(--color-in-season)',
-  storage: 'var(--color-storage)',
-  imported: 'var(--color-imported)',
-  skip: '#efece6',
+  peak: 'var(--fill-peak)',
+  'in-season': 'var(--fill-in-season)',
+  storage: 'var(--fill-storage)',
+  imported: 'var(--fill-imported)',
+  skip: 'var(--fill-skip)',
 }
 
 /** Runs of the same verdict, for the screen-reader summary. */

@@ -25,7 +25,12 @@ export function FruitDetail({ entry, md }: { entry: CatalogEntry; md: MonthDay }
     .sort((a, b) => RANK.indexOf(a.verdict) - RANK.indexOf(b.verdict))
 
   return (
-    <article style={{ '--verdict-color': `var(--color-${verdict})` } as CSSProperties}>
+    <article style={
+        {
+          '--verdict-color': `var(--color-${verdict})`,
+          '--verdict-fill': `var(--fill-${verdict})`,
+        } as CSSProperties
+      }>
       <a className="detail__back" href="#/">← All fruit</a>
 
       <div className="detail__head">

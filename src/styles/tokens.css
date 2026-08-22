@@ -10,12 +10,23 @@
   --color-ink-soft: #5c554d;
   --color-rule: #d8d2c8;
 
-  /* Verdicts. Always paired with a text label — never color alone (§8.4). */
-  --color-peak: #12693c;
-  --color-in-season: #55701c;
-  --color-storage: #8a6a1f;
-  --color-imported: #2a5c8a;
-  --color-skip: #6b6b6b;
+  /* Verdicts come in pairs, because fills and text have different jobs.
+     --fill-* are the graphic values: strip cells and group rules, where only
+     separation from the neighbouring block matters.
+     --color-* are the text values: the same hue darkened to clear WCAG AA on
+     white. Hue is identical within each pair; only lightness differs.
+     Always paired with a text label — never color alone (§8.4). */
+  --fill-peak: #6ac311;
+  --fill-in-season: #1a7a66;
+  --fill-storage: #cb9452;
+  --fill-imported: #ad6496;
+  --fill-skip: #cdc5b6;
+
+  --color-peak: #47830b;
+  --color-in-season: #1a7a66;
+  --color-storage: #9c6b2f;
+  --color-imported: #a85b90;
+  --color-skip: #827359;
 
   /* Source Serif 4 and Inter are the intended faces and must be self-hosted
      (§8.6). Until the files are bundled these fall back gracefully. */
