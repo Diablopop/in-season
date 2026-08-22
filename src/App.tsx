@@ -2,7 +2,7 @@ import './App.css'
 import { FruitDetail } from './components/FruitDetail'
 import { VerdictGroup } from './components/VerdictGroup'
 import { catalog, region } from './lib/catalog'
-import { useRoute, useScrollReset } from './lib/router'
+import { useRoute } from './lib/router'
 import { toMonthDay } from './lib/season'
 import { resolveEntry } from './lib/varieties'
 import type { Verdict } from './lib/types'
@@ -19,7 +19,6 @@ export function App() {
   const today = new Date()
   const md = toMonthDay(today)
   const route = useRoute()
-  useScrollReset(route)
 
   const selected = route ? catalog.find((e) => e.fruit.slug === route) : undefined
 

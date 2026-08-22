@@ -31,3 +31,30 @@
   grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
   gap: var(--space-4) var(--space-3);
 }
+
+.group__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.group__list a {
+  display: block;
+  /* Padded to a 44px touch target (§8.4) despite being plain text. */
+  padding: var(--space-3) 0;
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+}
+
+.group__list a:hover {
+  color: var(--color-ink);
+  text-decoration: underline;
+}
+
+.group__list a:focus-visible {
+  outline: var(--rule-medium) solid var(--color-ink);
+  outline-offset: 2px;
+}
+

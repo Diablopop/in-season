@@ -25,17 +25,23 @@
   border-left: var(--rule-hairline) solid var(--color-page);
 }
 
-.strip__now {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  outline: var(--rule-medium) solid var(--color-ink);
-  outline-offset: -1px;
+/* Today's pointer sits in its own row so it cannot overlap the bar. */
+.strip__marker-row {
+  position: relative;
+  height: 10px;
+  margin-bottom: 3px;
 }
 
-.strip__now--first { left: 0; }
-.strip__now--second { right: 0; }
+.strip__marker {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid var(--color-ink);
+}
 
 .strip__months {
   display: grid;
@@ -44,12 +50,6 @@
   font-size: var(--text-xs);
   color: var(--color-ink-soft);
   text-align: center;
-}
-
-.strip__caption {
-  margin: var(--space-2) 0 0;
-  font-size: var(--text-xs);
-  color: var(--color-ink-soft);
 }
 
 .visually-hidden {

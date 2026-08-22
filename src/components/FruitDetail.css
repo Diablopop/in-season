@@ -33,10 +33,13 @@
   color: var(--color-ink-soft);
 }
 
+/* The verdict is the answer the page exists to give, so it outweighs the note
+   below it. Tracking eases off as the size grows — uppercase needs less of it. */
 .detail__verdict {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  display: block;
+  font-size: var(--text-base);
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--verdict-color);
 }

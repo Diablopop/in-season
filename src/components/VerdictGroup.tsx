@@ -28,11 +28,24 @@ export function VerdictGroup({
         <h2 className="group__label">{label(verdict)}</h2>
         <div className="group__rule" role="presentation" />
       </div>
-      <div className="group__grid">
-        {entries.map((e) => (
-          <FruitCard key={e.fruit.slug} entry={e} md={md} />
-        ))}
-      </div>
+      {/* Out-of-season fruit gets a name list rather than cards. The answer is
+          the same for every one of them, so artwork and a repeated note would
+          take up the most space to say the least. */}
+      {verdict === 'skip' ? (
+        <ul className="group__list">
+          {entries.map((e) => (
+            <li key={e.fruit.slug}>
+              <a href={`#/${e.fruit.slug}`}>{e.fruit.name}</a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="group__grid">
+          {entries.map((e) => (
+            <FruitCard key={e.fruit.slug} entry={e} md={md} />
+          ))}
+        </div>
+      )}
     </section>
   )
 }

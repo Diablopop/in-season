@@ -51,6 +51,15 @@ export function SeasonStrip({
 
   return (
     <figure className="strip">
+      {/* Centred on today's half-month. Half-month granularity, not day, because
+          that is the resolution the data actually has. */}
+      <div className="strip__marker-row" aria-hidden="true">
+        <span
+          className="strip__marker"
+          style={{ left: `${((nowIndex + 0.5) / 24) * 100}%` }}
+        />
+      </div>
+
       <div className="strip__cells" role="img" aria-label={summarize(verdicts)}>
         {/* One element per month, its two halves painted by a hard-stop gradient.
             Two adjacent boxes would seam: 1fr columns land on fractional pixels
@@ -65,13 +74,7 @@ export function SeasonStrip({
                 '--second': FILL[verdicts[m * 2 + 1]],
               } as CSSProperties
             }
-          >
-            {Math.floor(nowIndex / 2) === m && (
-              <span
-                className={`strip__now strip__now--${nowIndex % 2 === 0 ? 'first' : 'second'}`}
-              />
-            )}
-          </div>
+          />
         ))}
       </div>
       <div className="strip__months" aria-hidden="true">
@@ -79,7 +82,6 @@ export function SeasonStrip({
           <span key={i}>{m}</span>
         ))}
       </div>
-      <figcaption className="strip__caption">The year at a glance. Today is outlined.</figcaption>
     </figure>
   )
 }
