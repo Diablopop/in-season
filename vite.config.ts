@@ -7,6 +7,10 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      // Manifest icons are precached by default. The OS fetches them at install
+      // time and the running app never requests them, so caching ~880KB of PNG
+      // buys nothing on a phone with poor signal.
+      includeManifestIcons: false,
       // Dev has no service worker: a stale cache during development is a
       // confusing failure mode, and offline is a production concern.
       devOptions: { enabled: false },
