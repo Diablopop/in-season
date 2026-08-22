@@ -23,6 +23,19 @@ const slugsFrom = (dir) =>
         .map((f) => [basename(f).replace(/\.[^.]+$/, ''), join(dir, f)])
     : []
 
+// The masters live outside the repo, so they exist only on a machine that has
+// them checked out alongside it. Running here without them would quietly
+// regenerate every fruit as a placeholder circle and overwrite the committed
+// artwork — which is exactly what happened when this ran during a CI build.
+if (!existsSync(MASTERS)) {
+  console.error(
+    `\nNo masters directory at ${MASTERS}.\n` +
+      `This script is a local authoring step, not a build step: the emitted\n` +
+      `WebP files are committed, so deploys use them as-is.\n`,
+  )
+  process.exit(1)
+}
+
 const masters = new Map(slugsFrom(MASTERS))
 
 // A misspelled master silently emits an orphan file and leaves the placeholder
