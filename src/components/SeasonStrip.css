@@ -5,7 +5,6 @@
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   height: 18px;
-  border: var(--rule-hairline) solid var(--color-ink);
 }
 
 .strip__cell { background: var(--cell); }
@@ -17,10 +16,6 @@
   border-left: var(--rule-hairline) solid var(--color-page);
 }
 
-/* Month boundaries stay heavier so the year is still readable at a glance. */
-.strip__cell:nth-child(2n + 1):not(:first-child) {
-  border-left: var(--rule-hairline) solid var(--color-ink);
-}
 
 .strip__now {
   outline: var(--rule-medium) solid var(--color-ink);
