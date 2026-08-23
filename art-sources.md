@@ -31,6 +31,7 @@
 | Nectarine         | USDA Pomological Watercolor Collection | Amanda Almira Newton, c. 1860 - 1943 |
 | Orange (navel)    | USDA Pomological Watercolor Collection | Royal Charles Steadman, 1875 - 1964  |
 | Orange (Valencia) | USDA Pomological Watercolor Collection | Royal Charles Steadman, 1875 - 1964  |
+| Orange (blood)    | USDA Pomological Watercolor Collection | Mary Daisy Arnold, c. 1873 - 1955    |
 | Passion fruit     | USDA Pomological Watercolor Collection | Bertha Heiges, 1866 - 1956           |
 | Peach             | USDA Pomological Watercolor Collection | Louis C. C. Krieger, 1873 - 1940     |
 | Pear              | USDA Pomological Watercolor Collection | Mary Daisy Arnold, c. 1873 - 1955    |

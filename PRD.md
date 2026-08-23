@@ -2,7 +2,7 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.9
+**Version:** 1.10
 **Last updated:** 2026-08-23
 **Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
@@ -105,7 +105,7 @@ Storing dates rather than fixed period indices decouples storage precision from 
 
 ### 5.4 Data provenance
 
-Every window carries its citations in the data file, shown to the shopper in the detail view. Across 32 fruits the dataset draws on 30 distinct sources, and their reliability is uneven. Listing them by tier is the honest way to describe what this product actually knows.
+Every window carries its citations in the data file, shown to the shopper in the detail view. Across 33 fruits the dataset draws on 30 distinct sources, and their reliability is uneven. Listing them by tier is the honest way to describe what this product actually knows.
 
 **Government and university sources** — the strongest, used for the crops they cover.
 
@@ -147,7 +147,7 @@ Every data file carries a `lastReviewed` ISO date, shown in the Sources section 
 
 Approximately 30 fruits — the realistic year-round inventory of a Southern California grocery store. Coverage deliberately includes fruits that are currently out of season, because "skip the strawberries in December" is half the product's value.
 
-Indicative list: apple, apricot, avocado, blackberry, blueberry, cantaloupe, cherimoya, cherry, date, fig, grape, grapefruit, guava, kiwi, kumquat, lemon, lime, mandarin, mango, nectarine, orange (navel and Valencia treated separately), passion fruit, peach, pear, persimmon, plum/pluot, pomegranate, raspberry, strawberry, watermelon.
+Indicative list: apple, apricot, avocado, blackberry, blueberry, cantaloupe, cherimoya, cherry, date, fig, grape, grapefruit, guava, kiwi, kumquat, lemon, lime, mandarin, mango, nectarine, orange (navel, Valencia, and blood treated separately, per §7.1), passion fruit, peach, pear, persimmon, plum/pluot, pomegranate, raspberry, strawberry, watermelon.
 
 ### 6.2 Vegetables
 
@@ -475,3 +475,4 @@ Secondary, measurable without any analytics backend:
 | 1.7 | 2026-08-22 | Rewrote §5.4 to list the sources actually used, tiered by reliability, with known weaknesses named |
 | 1.8 | 2026-08-23 | Added §7.5 for the cover screen; recorded the cream exception in §8.6, amended the §11 launch criterion it invalidated, and qualified the §3.1 one-tap goal |
 | 1.9 | 2026-08-23 | §7.1: recorded the seasonal argument for keeping citrus types separate, and the card-or-variety test for cultivars of one species; Cara Cara added as a navel variety |
+| 1.10 | 2026-08-23 | Blood orange added as its own card, the first application of the §7.1 card-or-variety test; coverage now 33 fruits |

@@ -34,8 +34,11 @@ describe('catalog', () => {
     expect(missing).toEqual([])
   })
 
+  // A tripwire, not a rule. Adding a fruit is fine; adding one by accident, or
+  // losing one to a bad merge, is not. Bumping this number is the deliberate
+  // step that says the change was meant.
   it('covers the fruits the PRD scopes', () => {
-    expect(fruits.length).toBe(32)
+    expect(fruits.length).toBe(33)
   })
 
   it('has matching slugs inside and across both files', () => {

@@ -1,0 +1,31 @@
+{
+  "slug": "orange-blood",
+  "lastReviewed": "2026-08-23",
+  "sources": [
+    "https://citrusvariety.ucr.edu/crc3811",
+    "https://www.friedas.com/blood-oranges-are-in-season/",
+    "https://www.venturacoastal.com/growing-seasons"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "11-16",
+      "end": "12-15",
+      "origin": "California",
+      "note": "first Moros, colour still coming in"
+    },
+    {
+      "verdict": "peak",
+      "start": "12-16",
+      "end": "03-15",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "03-16",
+      "end": "04-30",
+      "origin": "California",
+      "note": "late Taroccos, flavour fading"
+    }
+  ]
+}
