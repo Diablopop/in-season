@@ -2,9 +2,9 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.5
+**Version:** 1.6
 **Last updated:** 2026-08-22
-**Status:** Draft — pending review
+**Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
 
 ---
@@ -114,7 +114,7 @@ Harvest windows are derived from public agricultural sources and cited in the re
 
 Import-origin notes (for example, "typically Chile and Peru in January") are stated as *typical* patterns, never as certainties about a specific shipment.
 
-Every data file carries a `lastReviewed` ISO date, surfaced in the app's About section. Claude will not invent a harvest window for any item where a cited source cannot be found; such items are omitted from the dataset rather than guessed.
+Every data file carries a `lastReviewed` ISO date, shown in the Sources section of each fruit's detail view alongside its citations. Claude will not invent a harvest window for any item where a cited source cannot be found; such items are omitted from the dataset rather than guessed.
 
 ---
 
@@ -357,23 +357,28 @@ The 12-month season strip in §7.2 should be drawn as a ruled figure with hairli
 
 Each milestone is independently testable and independently deployable.
 
-### Milestone 1 — Data foundation
+Live at <https://in-season-grocery.vercel.app/>, source at <https://github.com/Diablopop/in-season>.
+
+### Milestone 1 — Data foundation ✅ Complete
 Define the JSON schema. Author and cite Southern California windows for all ~30 fruits. Build the date-to-verdict resolution logic with unit tests. No UI.
 **Testable when:** a test suite proves that given a date, each fruit resolves to the expected verdict — including year-wrapping citrus windows, half-month boundaries, and the day-precision windows authored for short crops.
+**Verified 2026-08-22:** 30 tests pass. All 32 fruits carry sourced windows, citations, and a review date, enforced by a build-time validation test.
 
-### Milestone 2 — Home screen
+### Milestone 2 — Home screen ✅ Complete
 The single-screen card grid, verdict grouping, design tokens, responsive layout. Deployed to Vercel.
 **Testable when:** Andrew opens the URL on a phone in a store and gets a usable answer.
+**Verified 2026-08-22:** deployed to Vercel and installed on Andrew's phone. The in-store accuracy review in §10 is still outstanding.
 
-### Milestone 3 — Detail view and PWA
+### Milestone 3 — Detail view and PWA ✅ Complete
 Detail views with varieties, selection guidance, origin, storage, and the 12-month strip. Manifest, service worker, icons, offline support.
 **Testable when:** the app installs to the iOS home screen and renders fully in airplane mode.
+**Verified 2026-08-22:** installed to the home screen and confirmed working in airplane mode. The service worker precaches 71 entries — app shell, both fonts, and all 32 watercolors.
 
-### Milestone 4 — Regions
+### Milestone 4 — Regions — not started
 Region picker UI, `localStorage` persistence, plus authored data for Central/Northern California and Pacific Northwest.
 **Testable when:** switching regions changes verdicts correctly and the choice survives an app restart.
 
-### Milestone 5 — Vegetables
+### Milestone 5 — Vegetables — not started
 Add the sharply seasonal vegetables from §6.2 and a fruit/vegetable filter.
 
 ---
@@ -420,3 +425,4 @@ Secondary, measurable without any analytics backend:
 | 1.3 | 2026-08-21 | Added artwork and image assets section with format, sizes, path convention, and sourcing assessment (§8.5); generated placeholder assets; ruled out hand-drawn Aseprite art |
 | 1.4 | 2026-08-21 | Confirmed the watercolors as the art source with an AI supplement and disclosure policy; corrected §8.5 to opaque single-crop square assets; made per-variety art nullable; fixed card artwork (§7.1); added the textbook-plate design direction (§8.6) — pure white ground, light theme only, Source Serif 4 with Inter, rules instead of shadows |
 | 1.5 | 2026-08-22 | Moved into the app repository so the specification is versioned with the code it describes |
+| 1.6 | 2026-08-22 | Marked milestones 1–3 complete and verified; status moved from Draft to Active |
