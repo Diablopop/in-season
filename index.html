@@ -53,7 +53,7 @@
         --cover-paper: #f5ead7;
         --cover-ink: #1a1714; /* mirrors --color-ink */
         --cover-hold: 500ms;
-        --cover-fade: 550ms;
+        --cover-fade: 450ms;
       }
 
       .cover {
@@ -71,10 +71,18 @@
         background-size: cover;
         background-position: center;
         text-align: center;
-        /* Shorthand order is duration then delay: hold, then fade. The whole
-           thing is over in 900ms. Fill mode forwards is what makes this safe
-           without script — the end state persists. */
-        animation: cover-out var(--cover-fade) ease-in var(--cover-hold) forwards;
+        /*
+          Shorthand order is duration then delay: hold, then fade. Fill mode
+          forwards is what makes this safe without script — the end state
+          persists.
+
+          ease-out, not ease-in. An easing that starts slow keeps the apple at
+          near-full opacity over the grid for the first fifth of the fade and
+          then drops it, which reads as an afterimage rather than a dissolve.
+          Starting fast gets the artwork out of the way immediately and spends
+          the tail on the part that is barely visible anyway.
+        */
+        animation: cover-out var(--cover-fade) ease-out var(--cover-hold) forwards;
       }
 
       /*
