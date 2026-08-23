@@ -31,8 +31,141 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="A watercolor apple beside the words In Season." />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!--
+      Cover screen. See SPLASH.md.
+
+      Inline and static rather than a React component, because a component
+      cannot paint until the bundle parses — a cold load would flash white
+      before the cream, which is the exact artifact this exists to avoid. Its
+      tokens live here rather than in tokens.css for the same reason: that
+      stylesheet has not loaded at first paint.
+    -->
+    <style>
+      :root {
+        /* Cover stock. The only cream in the product — the pages stay pure
+           white (PRD §8.6). A cover is different stock from the pages. */
+        --cover-paper: #f5ead7;
+        --cover-ink: #1a1714;      /* mirrors --color-ink */
+        --cover-ink-soft: #5c554d; /* mirrors --color-ink-soft */
+        --cover-hold: 350ms;
+        --cover-fade: 550ms;
+      }
+
+      .cover {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.375rem;
+        background: var(--cover-paper);
+        text-align: center;
+        /* Shorthand order is duration then delay: hold, then fade. The whole
+           thing is over in 900ms. Fill mode forwards is what makes this safe
+           without script — the end state persists. */
+        animation: cover-out var(--cover-fade) ease-in var(--cover-hold) forwards;
+      }
+
+      /* Not an h1: the app has one, and two would be a worse outline for the
+         sake of a decorative screen that is aria-hidden anyway. */
+      .cover__title {
+        margin: 0;
+        font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+        font-weight: 600;
+        font-size: 2.75rem;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        color: var(--cover-ink);
+      }
+
+      .cover__meta {
+        margin: 0;
+        font-family: 'Inter', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+        font-size: 0.9375rem;
+        color: var(--cover-ink-soft);
+      }
+
+      /* visibility, not just opacity: it takes the cover out of hit-testing at
+         the end of the animation, so a script failure cannot leave an
+         invisible sheet swallowing taps. */
+      @keyframes cover-out {
+        to {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      /* A full-screen cross-fade is precisely what this preference asks to be
+         spared. Skip the cover rather than shorten it. */
+      @media (prefers-reduced-motion: reduce) {
+        .cover { display: none; }
+      }
+    </style>
   </head>
   <body>
+    <div class="cover" id="cover" aria-hidden="true">
+      <p class="cover__title">In Season</p>
+      <p class="cover__meta" id="cover-meta"></p>
+    </div>
+    <script>
+      // Progressive enhancement only. The CSS above already clears the cover;
+      // this adds skip-on-interaction and removes the dead node.
+      ;(function () {
+        var el = document.getElementById('cover')
+        if (!el) return
+
+        // Written at runtime so the cover cannot go stale. The region is
+        // static until the picker lands in milestone 4 — it must match
+        // src/data/regions/socal/region.json until then.
+        var today = new Intl.DateTimeFormat('en-US', {
+          month: 'long',
+          day: 'numeric',
+        }).format(new Date())
+        document.getElementById('cover-meta').textContent =
+          today + ' \u00b7 Southern California'
+
+        var done = false
+        function clear() {
+          if (done) return
+          done = true
+          el.remove()
+        }
+
+        // The cost of the cover to someone in a hurry should be one tap.
+        // Cancel the running animation, pin the opacity it had reached, then
+        // transition from there — otherwise the restart jumps back to full.
+        function skip() {
+          if (done) return
+          var reached = getComputedStyle(el).opacity
+          el.style.animation = 'none'
+          el.style.opacity = reached
+          // Cancelling the animation also cancels the visibility: hidden its
+          // last keyframe would have applied, so the cover would stay
+          // hit-testable at opacity 0 until the backstop fired — an invisible
+          // sheet swallowing the next tap. Drop it here instead.
+          el.style.pointerEvents = 'none'
+          void el.offsetWidth // force reflow so the new transition takes
+          el.style.transition = 'opacity 150ms linear'
+          el.style.opacity = '0'
+        }
+
+        el.addEventListener('animationend', clear)
+        el.addEventListener('transitionend', clear)
+        addEventListener('pointerdown', skip, { once: true })
+        addEventListener('keydown', skip, { once: true })
+
+        // Reduced motion hides the cover outright, so no animation ever fires
+        // and nothing above would remove it.
+        if (getComputedStyle(el).display === 'none') clear()
+
+        // Backstop. Nothing above should be able to strand the cover, but the
+        // consequence of being wrong is an app the shopper cannot use.
+        setTimeout(clear, 3000)
+      })()
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

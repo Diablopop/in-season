@@ -1,10 +1,54 @@
 import react from '@vitejs/plugin-react'
+import type { Plugin } from 'vite'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
+
+/**
+ * Preloads the two woff2 files.
+ *
+ * The cover screen paints its title before the stylesheet has requested a font,
+ * so with font-display: swap it renders in Georgia and visibly switches to
+ * Source Serif 4 partway through the fade. Preloading starts both fetches at
+ * HTML parse instead, which is early enough to beat first paint from the
+ * service worker cache.
+ *
+ * This has to be a plugin rather than two <link> tags because Vite content-
+ * hashes the filenames at build time. In dev the files are served from source.
+ *
+ * crossorigin is required even though the fonts are same-origin: font requests
+ * are made in anonymous CORS mode, and a preload that does not match the mode
+ * is ignored and the file is fetched twice.
+ */
+const preloadFonts = (): Plugin => {
+  const link = (href: string) => ({
+    tag: 'link',
+    attrs: { rel: 'preload', as: 'font', type: 'font/woff2', href, crossorigin: 'anonymous' },
+    injectTo: 'head-prepend' as const,
+  })
+
+  return {
+    name: 'preload-fonts',
+    transformIndexHtml: {
+      order: 'post',
+      handler(_html, ctx) {
+        if (ctx.bundle) {
+          return Object.keys(ctx.bundle)
+            .filter((f) => f.endsWith('.woff2'))
+            .map((f) => link(`/${f}`))
+        }
+        return [
+          link('/src/assets/fonts/source-serif-4-latin-opsz-normal.woff2'),
+          link('/src/assets/fonts/inter-latin-wght-normal.woff2'),
+        ]
+      },
+    },
+  }
+}
 
 export default defineConfig({
   plugins: [
     react(),
+    preloadFonts(),
     VitePWA({
       registerType: 'autoUpdate',
       // Manifest icons are precached by default. The OS fetches them at install
