@@ -2,7 +2,7 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.13
+**Version:** 1.14
 **Last updated:** 2026-08-23
 **Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
@@ -429,8 +429,26 @@ Detail views with varieties, selection guidance, origin, storage, and the 12-mon
 **Verified 2026-08-22:** installed to the home screen and confirmed working in airplane mode. The service worker precaches 71 entries — app shell, both fonts, and all 32 watercolors.
 
 ### Milestone 4 — Regions — not started
-Region picker UI, `localStorage` persistence, plus authored data for Central/Northern California and Pacific Northwest.
+Region picker UI, `localStorage` persistence, plus authored data for the Pacific Northwest. Scope narrowed on 2026-08-23: renaming the launch region to California absorbed what had been a separate Central/Northern California region, so this milestone adds one region rather than two. See §6.3.
+
 **Testable when:** switching regions changes verdicts correctly and the choice survives an app restart.
+
+**Code, roughly half a day.** Everything else is data. Two places still assume one region:
+
+* `src/lib/catalog.ts` — the `import.meta.glob` path and the `region.json` lookup are both hardcoded to `../data/regions/california/`. Both need to take the active region.
+* No `localStorage` layer and no picker exist yet.
+
+`FruitDetail` was reading a hardcoded `'Southern California'` and now reads `region.name`, so it needs nothing further. `region.json` still carries `lastReviewed: null`; that field is meant to let a shopper judge how current a region's data is and has no UI yet.
+
+**Data is the milestone.** 33 fruits, sourced from that region's own extension service — WSU Tree Fruit and OSU Extension both publish real harvest calendars, which is a stronger footing than several California entries have (see the known weaknesses in §5.4).
+
+Two things make this cheaper than authoring California was, and one makes it different rather than cheaper:
+
+* Winter is close to nationally uniform. From roughly November to April a Portland store and a Los Angeles store are both selling Chilean, Peruvian and Mexican fruit, so much of the file is import windows differing only in origin.
+* Citrus and the subtropicals — avocado, dates, cherimoya, tropical guava, passion fruit — have no Pacific Northwest harvest at all. They resolve to `imported`, frequently imported *from California*, which the existing `origin` field already expresses. No schema change.
+* The emphasis inverts. Washington grows most of the country's apples, Bing and Rainier cherries are a Northwest institution, and Oregon owns marionberries and Hood River pears. Fruits California treats as ordinary are the headline crops there, and their windows deserve the tighter authoring §5.3 permits.
+
+**Andrew can run the §10 accuracy review himself for this region**, which is not true of most others. That is the only test that catches genuinely wrong data.
 
 ### Milestone 5 — Vegetables — not started
 Add the sharply seasonal vegetables from §6.2 and a fruit/vegetable filter.
@@ -493,3 +511,4 @@ Secondary, measurable without any analytics backend:
 | 1.11 | 2026-08-23 | §8.2: corrected the boundary convention and recorded that it is now enforced; §10: tests now block the build |
 | 1.12 | 2026-08-23 | Closed all three open questions in §12; cantaloupe named to variety, guava renamed Tropical guava to disambiguate it from feijoa |
 | 1.13 | 2026-08-23 | Launch region renamed Southern California to California, matching how its windows were already sourced; §6.3 reframed around supply sheds, collapsing milestone 4 to two regions |
+| 1.14 | 2026-08-23 | Milestone 4 rewritten with its remaining code blockers, sourcing notes, and the ways a second region differs from the first |
