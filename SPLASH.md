@@ -52,7 +52,7 @@ On a device with a mouse, none of the above happens — see D7. The cover is `di
 
 | # | Decision | Claude's recommendation | Rationale |
 |---|---|---|---|
-| D1 | Total duration | **950ms** — 500ms hold, 450ms fade, eased out. Andrew set the hold after feeling it; the fade was right first time. Slightly over the ~1s flow threshold, accepted knowingly, and worth re-checking once the artwork lands in milestone 2 — imagery makes the same duration feel shorter. | Andrew proposed 1–1.5s. Nielsen's classic threshold puts ~1 second at the edge of uninterrupted flow; past it, people register waiting. Starting the fade early spends similar wall-clock time while feeling shorter. Exposed as one CSS custom property, so it is a one-line change either way. |
+| D1 | Total duration | **650ms** — 500ms hold, 150ms fade, eased out. The fade does no dramatic work; it is only the means of getting from cover to app, so it is short enough to read as a cut. A true hard cut is `--cover-fade: 1ms`. Andrew set the hold after feeling it; the fade was right first time. Slightly over the ~1s flow threshold, accepted knowingly, and worth re-checking once the artwork lands in milestone 2 — imagery makes the same duration feel shorter. | Andrew proposed 1–1.5s. Nielsen's classic threshold puts ~1 second at the edge of uninterrupted flow; past it, people register waiting. Starting the fade early spends similar wall-clock time while feeling shorter. Exposed as one CSS custom property, so it is a one-line change either way. |
 | D2 | Skip affordance | **Any tap, click, or key press** | The single most important variable. It drops the cost to near zero when Andrew is in a hurry while keeping the moment when he is not. |
 | D3 | Frequency | **Every cold start, no session cap** | Capping produces inconsistent behavior that is harder to reason about than always-on. iOS evicts installed PWAs aggressively, so cold starts will be common — which is an argument for D2, not for capping. |
 | D4 | Reduced motion | **Skip the splash entirely** under `prefers-reduced-motion: reduce` | A full-screen cross-fade is exactly what that preference asks to avoid. Required by PRD §8.4. |
@@ -187,3 +187,4 @@ The PRD currently contradicts this feature in three places. Each should be amend
 | 1.5 | 2026-08-22 | Milestone 2 shipped — paper, apple, composition, and the short-screen ceiling |
 | 1.6 | 2026-08-22 | Date and region removed from the cover; Cover Sans retired with them |
 | 1.7 | 2026-08-22 | Fade shortened to 450ms and switched from ease-in to ease-out, which was the actual cause of the apple appearing to ghost |
+| 1.8 | 2026-08-22 | Fade cut to 150ms — effectively a cut; artwork is above half opacity for 51ms, down from ~370ms |
