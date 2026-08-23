@@ -27,7 +27,7 @@ export default defineConfig({
         name: 'In Season',
         short_name: 'In Season',
         description:
-          'What fruit is worth buying in Southern California right now.',
+          'Get instant answers while you shop on which Southern California fruits are at their peak and which to skip.',
         start_url: '/',
         scope: '/',
         display: 'standalone',
