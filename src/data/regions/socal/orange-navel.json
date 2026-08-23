@@ -1,9 +1,11 @@
 {
   "slug": "orange-navel",
-  "lastReviewed": "2026-08-21",
+  "lastReviewed": "2026-08-22",
   "sources": [
     "https://www.venturacoastal.com/growing-seasons",
-    "https://cns.ucdavis.edu/news/its-citrus-season"
+    "https://cns.ucdavis.edu/news/its-citrus-season",
+    "https://www.thepacker.com/news/produce-crops/citrus-suppliers-turn-southern-hemisphere-imports",
+    "https://theproducenews.com/citrus-import-demand-and-growing-united-states"
   ],
   "windows": [
     {
@@ -23,6 +25,12 @@
       "start": "02-01",
       "end": "05-31",
       "origin": "California"
+    },
+    {
+      "verdict": "imported",
+      "start": "06-01",
+      "end": "10-31",
+      "origin": "Chile, Australia, and South Africa"
     }
   ]
 }
