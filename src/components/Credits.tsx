@@ -43,7 +43,7 @@ export function Credits() {
       <p className="credits__intro">
         When available, illustrations are from the{' '}
         <a
-          href="https://www.nal.usda.gov/collections/special-collections/pomological-watercolors"
+          href="https://search.nal.usda.gov/discovery/collectionDiscovery?vid=01NAL_INST:MAIN&collectionId=81279629860007426"
           target="_blank"
           rel="noopener noreferrer"
         >
