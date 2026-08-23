@@ -1,5 +1,11 @@
+import { softDate } from './notes'
 import { resolve, resolveVariety } from './season'
 import type { Fruit, MonthDay, RegionItem, SeasonWindow, Verdict } from './types'
+
+const ordinal = (md: MonthDay) => {
+  const [m, d] = md.split('-').map(Number)
+  return m * 100 + d
+}
 
 const varietyWindows = (item: RegionItem): SeasonWindow[] =>
   Object.values(item.varieties ?? {}).flatMap((v) => v.windows)
@@ -50,4 +56,60 @@ export function standoutVarieties(
     })
     .slice(0, limit)
     .map((v) => v.name)
+}
+
+/**
+ * The detail view's headline, for fruits whose verdict is lifted by a variety.
+ *
+ * A verdict lifted by a variety describes that variety, not the fruit. Saying
+ * only "through mid-September" silently changes the subject from apples to Gala,
+ * and then contradicts a calendar showing peak into November. So the note names
+ * whose window it is, and the arc says what happens after it.
+ *
+ * Both are computed together because they share a date: the arc only makes sense
+ * relative to when the named varieties actually finish.
+ *
+ * Returns nulls when the fruit owns its own window, where the plain note is right.
+ */
+export function varietyHeadline(
+  fruit: Fruit,
+  item: RegionItem,
+  md: MonthDay,
+): { note: string | null; arc: string | null } {
+  const none = { note: null, arc: null }
+  const { verdict } = resolveEntry(item, md)
+
+  // Only a live season has varieties to talk about. In storage or out of season
+  // the fruit speaks for itself.
+  if (verdict !== 'peak' && verdict !== 'in-season') return none
+
+  const names = standoutVarieties(fruit, item, md, verdict)
+  if (names.length === 0) return none
+
+  // Each named variety has its own window. Use the latest end, or the note
+  // understates how long the ones still going will last.
+  const ends = (fruit.varieties ?? [])
+    .filter((v) => names.includes(v.name))
+    .map((v) => resolve(item.varieties?.[v.slug]?.windows ?? [], md).window)
+    .filter((w): w is SeasonWindow => w !== null)
+    .map((w) => w.end)
+  if (ends.length === 0) return none
+
+  const end = ends.reduce((a, b) => (ordinal(a) >= ordinal(b) ? a : b))
+  const state = verdict === 'peak' ? 'at peak' : 'in season'
+  const note = `${names.join(', ')}, ${state} through ${softDate(end)}`
+
+  const peaks = Object.values(item.varieties ?? {})
+    .flatMap((v) => v.windows)
+    .filter((w) => w.verdict === 'peak')
+  const latest = peaks.length
+    ? peaks.reduce((a, b) => (ordinal(a.end) >= ordinal(b.end) ? a : b)).end
+    : null
+
+  const arc =
+    latest && ordinal(latest) > ordinal(end)
+      ? `Later varieties run into ${softDate(latest)}.`
+      : null
+
+  return { note, arc }
 }

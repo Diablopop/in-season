@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { resolve } from './season'
-import { entryWindows, resolveEntry, standoutVarieties } from './varieties'
+import { entryWindows, resolveEntry, standoutVarieties, varietyHeadline } from './varieties'
 import type { Fruit, RegionItem, Verdict } from './types'
 
 const FRUITS_DIR = 'src/data/fruits'
@@ -161,5 +161,43 @@ describe('season strip', () => {
         )
       })
     })
+  })
+})
+
+describe('variety headline', () => {
+  const i = fruitFiles.indexOf('apple.json')
+  const apple = fruits[i]
+  const item = items[i]
+  const at = (md: string) => varietyHeadline(apple, item, md)
+
+  it('names whose window the date belongs to', () => {
+    // Not "through mid-September" alone, which reads as a claim about apples.
+    expect(at('08-22').note).toBe('Gala, at peak through mid-September')
+  })
+
+  it('uses the latest end when several varieties are named', () => {
+    // Pink Lady runs to 11-30 while Granny Smith and Fuji stop at 11-15.
+    // Taking the winning window's end would understate it.
+    const h = at('11-10')
+    expect(h.note).toContain('Pink Lady')
+    expect(h.note).toContain('late November')
+  })
+
+  it('explains the rest of the calendar while later varieties are coming', () => {
+    expect(at('08-22').arc).toBe('Later varieties run into late November.')
+  })
+
+  it('drops the arc once nothing follows', () => {
+    expect(at('11-25').arc).toBeNull()
+  })
+
+  it('says nothing about varieties out of season', () => {
+    expect(at('01-15')).toEqual({ note: null, arc: null })
+    expect(at('07-01')).toEqual({ note: null, arc: null })
+  })
+
+  it('leaves fruits without varieties to their own note', () => {
+    const j = fruitFiles.indexOf('peach.json')
+    expect(varietyHeadline(fruits[j], items[j], '07-01')).toEqual({ note: null, arc: null })
   })
 })

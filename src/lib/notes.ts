@@ -23,7 +23,7 @@ const MONTHS = ['January','February','March','April','May','June','July',
  * Deliberately vague: "mid-September", never "September 15". Stored precision is
  * finer than the underlying sources justify, so the copy must not imply it.
  */
-function softDate(md: string): string {
+export function softDate(md: string): string {
   const [m, d] = md.split('-').map(Number)
   const month = MONTHS[m - 1]
   if (d <= 10) return `early ${month}`

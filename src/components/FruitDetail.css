@@ -46,6 +46,13 @@
 
 .detail__note { margin: var(--space-1) 0 0; color: var(--color-ink-soft); }
 
+/* Explains why the calendar runs past the date above it. */
+.detail__arc {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+}
+
 /* Sections divide with hairlines rather than cards. Textbooks have no elevation. */
 .detail__section {
   border-top: var(--rule-hairline) solid var(--color-rule);

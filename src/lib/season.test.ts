@@ -46,13 +46,17 @@ describe('resolve', () => {
 describe('socal apple data', () => {
   const at = (md: string) => resolve(apple.windows as SeasonWindow[], md).verdict
 
-  it('resolves the shape of the apple year', () => {
+  it('resolves the shape of the apple year at fruit level', () => {
+    // Apples own no peak window: the varieties do, so every peak has an
+    // unambiguous owner and the note can name it. At fruit level the harvest
+    // months read as in-season, and resolveEntry lifts them to peak.
     expect(at('08-20')).toBe('in-season')
-    expect(at('10-01')).toBe('peak')
+    expect(at('10-01')).toBe('in-season')
     expect(at('11-15')).toBe('in-season')
     expect(at('01-15')).toBe('storage')
     // Summer apples are storage fruit, not a separate imported window — see sources.
     expect(at('07-01')).toBe('storage')
+    expect(apple.windows.some((w) => w.verdict === 'peak')).toBe(false)
   })
 
   it('covers every day of the year with an explicit window', () => {

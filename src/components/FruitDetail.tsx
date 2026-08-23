@@ -3,7 +3,7 @@ import type { CatalogEntry } from '../lib/catalog'
 import { label, note } from '../lib/notes'
 import { resolve, resolveVariety } from '../lib/season'
 import type { MonthDay, Verdict } from '../lib/types'
-import { entryWindows, resolveEntry } from '../lib/varieties'
+import { entryWindows, resolveEntry, varietyHeadline } from '../lib/varieties'
 import { SeasonStrip } from './SeasonStrip'
 import './FruitDetail.css'
 
@@ -12,6 +12,7 @@ const RANK: Verdict[] = ['peak', 'in-season', 'storage', 'imported', 'skip']
 export function FruitDetail({ entry, md }: { entry: CatalogEntry; md: MonthDay }) {
   const { fruit, item } = entry
   const { verdict, window } = resolveEntry(item, md)
+  const headline = varietyHeadline(fruit, item, md)
 
   /** Best first, so the view opens on the answer rather than an alphabetical list. */
   const varieties = (fruit.varieties ?? [])
@@ -43,7 +44,10 @@ export function FruitDetail({ entry, md }: { entry: CatalogEntry; md: MonthDay }
             <p className="detail__botanical">{fruit.botanicalName}</p>
           )}
           <span className="detail__verdict">{label(verdict)}</span>
-          <p className="detail__note">{note(verdict, window)}</p>
+          <p className="detail__note">
+            {headline.note ?? note(verdict, window)}
+          </p>
+          {headline.arc && <p className="detail__arc">{headline.arc}</p>}
           <SeasonStrip windows={entryWindows(item)} md={md} />
         </div>
       </div>
