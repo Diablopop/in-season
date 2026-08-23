@@ -54,7 +54,7 @@ This is a deliberate, manufactured delay. There is no load time to mask — the 
 | D2 | Skip affordance | **Any tap, click, or key press** | The single most important variable. It drops the cost to near zero when Andrew is in a hurry while keeping the moment when he is not. |
 | D3 | Frequency | **Every cold start, no session cap** | Capping produces inconsistent behavior that is harder to reason about than always-on. iOS evicts installed PWAs aggressively, so cold starts will be common — which is an argument for D2, not for capping. |
 | D4 | Reduced motion | **Skip the splash entirely** under `prefers-reduced-motion: reduce` | A full-screen cross-fade is exactly what that preference asks to avoid. Required by PRD §8.4. |
-| D5 | Serif font preload | **Both woff2 files preloaded.** Pulled forward into milestone 1 — Andrew saw the swap immediately, and the title is where it is most visible. | `font-display: swap` means the title would otherwise render in Georgia and swap mid-splash on a cold browser load. Costs 122KB earlier in the waterfall on first visit only; precached thereafter. |
+| D5 | Cover fonts | **Cover-scoped `@font-face` at `font-display: block`, plus preload.** Pulled forward into milestone 1. Preload alone was not enough — see below. | `font-display: swap` means the title would otherwise render in Georgia and swap mid-splash on a cold browser load. Costs 122KB earlier in the waterfall on first visit only; precached thereafter. |
 | D6 | Manifest colors | `background_color` → cream; **`theme_color` stays `#ffffff`** | `background_color` backs the Android launch screen, so cream prevents a white flash before the cream splash. `theme_color` tints browser and status bar chrome, which sits against the white app for the whole session — cream there would be a permanent mismatch to fix a 900ms one. |
 
 ---
@@ -152,6 +152,8 @@ The PRD currently contradicts this feature in three places. Each should be amend
 
 **Milestone 1 verified 2026-08-22.** The animation was seeked frame by frame rather than timed against the wall clock: opacity holds at 1.00 through 350ms, eases to 0.00 at 900ms, and `visibility` flips to hidden at the end. Fonts fetch at 14ms and complete at 16ms, so the serif is available well before the hold expires. Outstanding for Andrew: the installed-PWA cold launch, and reduced motion on a real device.
 
+**Preload alone did not fix the font swap.** Preload fetches the bytes but cannot register the family; that comes from `fonts.css`, which arrives by script in dev and by a blocking link in a build. Either way the cover paints before it exists, so the title rendered in Georgia and switched. The cover now declares its own two families inline — registered on the first frame — at `font-display: block`, which never paints a fallback and instead shows nothing until the font is ready. Preload makes that a few milliseconds against a 350ms hold. The interface keeps `font-display: swap`, where a visible fallback beats invisible text. Verified: `Cover Serif` and `Cover Sans` report `loaded` at page load, and the two files are still fetched exactly once each despite being declared under two family names.
+
 **One defect found and fixed during milestone 1.** Skipping cancels the animation, which also cancels the `visibility: hidden` its final keyframe would have applied — leaving the cover at opacity 0 but still hit-testable until the 3-second backstop removed it, where it would silently swallow the next tap. Skip now drops `pointer-events` itself. The cover deliberately remains hit-testable *before* the skip, so the tap that dismisses it cannot also activate a card underneath.
 
 ---
@@ -170,3 +172,4 @@ The PRD currently contradicts this feature in three places. Each should be amend
 |---|---|---|
 | 1.0 | 2026-08-22 | Initial scope |
 | 1.1 | 2026-08-22 | Decisions settled; milestone 1 shipped and verified; font preload pulled forward from milestone 2; recorded the skip hit-testing defect and its fix |
+| 1.2 | 2026-08-22 | Preload alone did not stop the font swap; cover now declares its own families inline at font-display: block |
