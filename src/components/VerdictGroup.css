@@ -1,11 +1,32 @@
-.group { margin-bottom: var(--space-8); }
-
 /* A labeled rule, the way a plate section is headed on a textbook page. */
 .group__head {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  margin-bottom: var(--space-4);
+
+  /*
+    Sticky inside its own .group, which is the whole trick: the head holds the
+    top of the screen until its section ends, and the next one pushes it off.
+    No scroll listener, and the hand-off falls out of the box model.
+
+    Worth it because the artwork out-shouts the labels — in late summer Peak
+    runs to a dozen cards, and the shopper scrolling through them has no way to
+    tell where Peak stops and In season starts.
+
+    Offset by the safe-area inset rather than 0: viewport-fit=cover means the
+    installed app draws under the status bar, where a plain top: 0 would park
+    the label beneath the clock. The inset is 0 everywhere else.
+  */
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 1;
+
+  /* Opaque, or vibrant artwork scrolls straight through the label. Page ground,
+     so the band stays invisible until something passes beneath it. */
+  background: var(--color-page);
+  /* Padding and margin together restore the original --space-4 gap below. */
+  padding: var(--space-3) 0;
+  margin-bottom: var(--space-1);
 }
 
 .group__label {
@@ -30,11 +51,21 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
   gap: var(--space-4) var(--space-3);
+  /* See .group__list — the gap between sections belongs to the body, not the
+     group, so the sticky head stays pinned all the way to the next section. */
+  padding-bottom: var(--space-8);
 }
 
+/*
+  The gap between sections is padding here rather than a margin on .group,
+  because a sticky head is bounded by its parent's *content* box. Spacing set on
+  .group — margin or padding, both measured the same — sits outside that box and
+  drops the head ~36px early, leaving a stretch of scroll with no label at all.
+  Inside the body, it extends the content box to where the next section starts.
+*/
 .group__list {
   margin: 0;
-  padding: 0;
+  padding: 0 0 var(--space-8);
   list-style: none;
 }
 
