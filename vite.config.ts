@@ -11,11 +11,15 @@ import { VitePWA } from 'vite-plugin-pwa'
  * build. Until that family is registered the title renders in Georgia and then
  * visibly switches, which is the worst place in the app to show a swap.
  *
- * So the cover gets its own two families, declared inline and therefore
+ * So the cover gets its own serif family, declared inline and therefore
  * registered on the first frame, with font-display: block — the fallback is
  * never painted, the text simply appears once the font is ready. Preload makes
- * that a few milliseconds against a 350ms hold. The interface keeps its own
+ * that a few milliseconds against the hold. The interface keeps its own
  * font-display: swap, where a fallback is better than invisible text.
+ *
+ * Only the serif gets a cover family: the wordmark is the only thing on that
+ * screen. Both files are still preloaded, because the interface needs both
+ * within the same first second and they are precached together anyway.
  *
  * Both live here rather than in index.html because Vite content-hashes the
  * filenames at build time, so the URLs are not knowable until then.
@@ -64,8 +68,7 @@ const coverFonts = (): Plugin => {
           preload(sans),
           {
             tag: 'style',
-            children:
-              face('Cover Serif', serif, '200 900') + face('Cover Sans', sans, '100 900'),
+            children: face('Cover Serif', serif, '200 900'),
             injectTo: 'head-prepend' as const,
           },
         ]

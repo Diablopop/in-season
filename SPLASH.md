@@ -11,7 +11,7 @@
 
 ## 1. Summary
 
-A brief cream, paper-textured cover screen shown at launch, carrying the app name, the watercolor apple, and today's date and region. It dissolves into the white home screen, making the app's book metaphor literal: a cover in different stock, then the plate pages.
+A brief cream, paper-textured cover screen shown at launch, carrying the watercolor apple and the app name. It dissolves into the white home screen, making the app's book metaphor literal: a cover in different stock, then the plate pages.
 
 This is a deliberate, manufactured delay. There is no load time to mask — the shell and dataset are precached and the app paints immediately. The splash exists for identity and for a moment of drama when the app is opened in a store. That tradeoff is accepted explicitly rather than rationalized as a loading indicator.
 
@@ -29,7 +29,7 @@ This is a deliberate, manufactured delay. There is no load time to mask — the 
 ### 2.2 Non-goals
 
 * **Not a loading indicator.** It does not wait on data, fonts, or network. It is time-boxed and unconditional.
-* **Not the place where date and region are communicated.** They appear for atmosphere, but a screen that disappears cannot be where a shopper checks what day the verdicts are for. That job belongs to the masthead — see §8.
+* **Carries no date or region.** They were on the cover through milestone 2 and Andrew removed them on 2026-08-22. A screen that disappears cannot be where a shopper checks what day the verdicts are for, so stating them here only invited the misreading that the question had been answered. That job belongs to the masthead — see §8. Dropping them also retired a hardcoded `Southern California` in `index.html` that would have had to be kept in step with `region.json` once the region picker lands.
 * **Not `apple-touch-startup-image`.** That path needs 15–20 device-sized images, covers only iOS, and cannot perform a transition. Rejected on cost and capability, not on principle.
 
 ---
@@ -107,14 +107,14 @@ Actual added precache cost: 144KB, taking the total from 71 entries at 1587KB to
 
 * Splash markup and its critical CSS are inlined in `index.html`. Rendering it from a React component would flash white before the cream, which is the exact artifact this is meant to avoid.
 * The cover's own tokens — cream, timings — are declared in that same inline block rather than in `tokens.css`, because `tokens.css` has not loaded when the cover paints. This is not a second source of truth: the cream and the timings have exactly one consumer, so they live where that consumer can read them. The two values it does share with the interface, `--color-ink` and `--color-ink-soft`, are necessarily repeated as literals and are commented as mirrors.
-* Date and region strings are rendered live rather than baked into an image, so the cover cannot go stale.
+* The cover carries no dynamic text at all, so it cannot go stale and its script does no rendering — only skip-on-interaction and cleanup.
 * The apple and paper are `<img>` and CSS background respectively, both marked decorative.
 
 ---
 
 ## 7. Accessibility
 
-* The splash carries `aria-hidden="true"`. It is atmosphere, and its content is repeated in the masthead immediately below it.
+* The splash carries `aria-hidden="true"`. It is atmosphere, and the app name it shows is repeated in the masthead immediately below it.
 * No focus trap. The app beneath is fully rendered and focusable throughout.
 * `prefers-reduced-motion: reduce` skips it entirely, per D4.
 * Skip is bound to key presses as well as pointer events, so it is not pointer-only.
@@ -185,3 +185,4 @@ The PRD currently contradicts this feature in three places. Each should be amend
 | 1.3 | 2026-08-22 | D7 added — cover is limited to touch devices and never shown on desktop |
 | 1.4 | 2026-08-22 | Hold lengthened to 500ms after Andrew felt it; total 1050ms |
 | 1.5 | 2026-08-22 | Milestone 2 shipped — paper, apple, composition, and the short-screen ceiling |
+| 1.6 | 2026-08-22 | Date and region removed from the cover; Cover Sans retired with them |

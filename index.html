@@ -51,8 +51,7 @@
         /* Cover stock. The only cream in the product — the pages stay pure
            white (PRD §8.6). A cover is different stock from the pages. */
         --cover-paper: #f5ead7;
-        --cover-ink: #1a1714;      /* mirrors --color-ink */
-        --cover-ink-soft: #5c554d; /* mirrors --color-ink-soft */
+        --cover-ink: #1a1714; /* mirrors --color-ink */
         --cover-hold: 500ms;
         --cover-fade: 550ms;
       }
@@ -65,7 +64,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0.375rem;
         /* The flat cream stays underneath as the fallback: if the texture
            fails to load the cover is plain paper-coloured, not broken. */
         background-color: var(--cover-paper);
@@ -111,13 +109,6 @@
         color: var(--cover-ink);
       }
 
-      .cover__meta {
-        margin: 0;
-        font-family: 'Cover Sans', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
-        font-size: 0.9375rem;
-        color: var(--cover-ink-soft);
-      }
-
       /* visibility, not just opacity: it takes the cover out of hit-testing at
          the end of the animation, so a script failure cannot leave an
          invisible sheet swallowing taps. */
@@ -152,7 +143,6 @@
     <div class="cover" id="cover" aria-hidden="true">
       <img class="cover__apple" src="/img/cover/apple.webp" alt="" width="922" height="1024" />
       <p class="cover__title">In Season</p>
-      <p class="cover__meta" id="cover-meta"></p>
     </div>
     <script>
       // Progressive enhancement only. The CSS above already clears the cover;
@@ -160,16 +150,6 @@
       ;(function () {
         var el = document.getElementById('cover')
         if (!el) return
-
-        // Written at runtime so the cover cannot go stale. The region is
-        // static until the picker lands in milestone 4 — it must match
-        // src/data/regions/socal/region.json until then.
-        var today = new Intl.DateTimeFormat('en-US', {
-          month: 'long',
-          day: 'numeric',
-        }).format(new Date())
-        document.getElementById('cover-meta').textContent =
-          today + ' \u00b7 Southern California'
 
         var done = false
         function clear() {
