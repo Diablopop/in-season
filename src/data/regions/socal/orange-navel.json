@@ -1,11 +1,14 @@
 {
   "slug": "orange-navel",
-  "lastReviewed": "2026-08-22",
+  "lastReviewed": "2026-08-23",
   "sources": [
     "https://www.venturacoastal.com/growing-seasons",
     "https://cns.ucdavis.edu/news/its-citrus-season",
     "https://www.thepacker.com/news/produce-crops/citrus-suppliers-turn-southern-hemisphere-imports",
-    "https://theproducenews.com/citrus-import-demand-and-growing-united-states"
+    "https://theproducenews.com/citrus-import-demand-and-growing-united-states",
+    "https://citrusvariety.ucr.edu/crc3994",
+    "https://tree-ripe.com/fruit/california-cara-cara/",
+    "https://www.freshplaza.com/north-america/article/9264690/central-california-citrus-season-is-underway/"
   ],
   "windows": [
     {
@@ -32,5 +35,8 @@
       "end": "10-31",
       "origin": "Chile, Australia, and South Africa"
     }
-  ]
+  ],
+  "varieties": {
+    "cara-cara": { "windows": [{ "verdict": "peak", "start": "12-16", "end": "03-15" }] }
+  }
 }

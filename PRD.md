@@ -2,7 +2,7 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.8
+**Version:** 1.9
 **Last updated:** 2026-08-23
 **Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
@@ -197,8 +197,15 @@ This reuses the existing note slot; it is a data capability, not a new component
 | Pear | One card, variety note | Bartlett, Bosc, and Anjou differ in ripening and storage behavior |
 | Grape | One card, no variety note | Red, green, and black have near-identical windows; nobody chooses by Flame vs. Thompson |
 | Plum and pluot | One card, no variety note | Labeled, but the real decision is "are pluots good now" |
-| Citrus | Separate cards per type | Navels, Valencias, mandarins, and grapefruit are perceived as different fruits, not varieties |
+| Citrus | Separate cards per type, each able to carry varieties | Navels, Valencias, mandarins, and grapefruit are perceived as different fruits. See the seasonal argument below, which is the decisive one. Cultivars within a type are varieties: Cara Cara is a navel mutation and appears as a variety of the navel card |
 | All others | One card, no variety note | Variety does not drive the purchase |
+
+**Why citrus types are never merged.** Perception is the intuitive reason and the weaker one. The decisive argument is seasonal: navel runs November to May, Valencia March to November. Since a card takes the best verdict among everything it covers, a merged orange card would resolve to `Peak` or `In season` on every single day of the year — never storage, never imported, never skip. A card that always says "good" carries no information, and the split is the only reason oranges say anything at all.
+
+**Card or variety, for cultivars of one species.** Sweet oranges are all *Citrus × sinensis*, so botany alone cannot decide this. The test is the cultivar group and the bin the shopper is standing at.
+
+* Same group, choosing between adjacent bins → **a variety**. Cara Cara is a mutation of the Washington navel, sits beside plain navels, and the question is which navel to pick.
+* Different group, read as a different fruit → **its own card**. Blood oranges are a separate group of sweet oranges with their own flesh, flavour, price, and December-to-April window; a card of their own says `Skip` for seven months, which is real signal rather than the always-good mush a merge would produce.
 
 ### 7.2 Detail view
 
@@ -450,7 +457,7 @@ Secondary, measurable without any analytics backend:
 2. Art direction: §8.5 recommends the USDA watercolors, but the choice is deliberately deferred — placeholders are in place and the format, sizes, and paths are fixed, so the decision can be made after milestone 2 shows the grid at real density. Hand-drawn pixel art in Aseprite is explicitly **not** the plan; 32 hand-created sprites is more production work than this app justifies.
 3. Does the app need an About screen explaining the verdict system, or should the verdicts be self-explanatory? Leaning toward a small, dismissible first-run explanation rather than a separate screen.
 
-**Closed:** whether navel and Valencia oranges share a card — resolved in §7.1. Citrus types get separate cards, because shoppers perceive them as different fruits rather than varieties of one.
+**Closed:** whether navel and Valencia oranges share a card — resolved in §7.1, and re-examined on 2026-08-23 when Andrew queried it. The split stands, on a stronger argument than the one originally recorded: their opposite seasons mean a merged card would read `Peak` or `In season` every day of the year. The same review added Cara Cara as a variety of the navel card and set the card-or-variety test for cultivars of one species.
 
 ---
 
@@ -467,3 +474,4 @@ Secondary, measurable without any analytics backend:
 | 1.6 | 2026-08-22 | Marked milestones 1–3 complete and verified; status moved from Draft to Active |
 | 1.7 | 2026-08-22 | Rewrote §5.4 to list the sources actually used, tiered by reliability, with known weaknesses named |
 | 1.8 | 2026-08-23 | Added §7.5 for the cover screen; recorded the cream exception in §8.6, amended the §11 launch criterion it invalidated, and qualified the §3.1 one-tap goal |
+| 1.9 | 2026-08-23 | §7.1: recorded the seasonal argument for keeping citrus types separate, and the card-or-variety test for cultivars of one species; Cara Cara added as a navel variety |
