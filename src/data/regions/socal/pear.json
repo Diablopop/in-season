@@ -1,26 +1,16 @@
 {
   "slug": "pear",
-  "lastReviewed": "2026-08-21",
+  "lastReviewed": "2026-08-22",
   "sources": [
     "https://cdn.agclassroom.org/ca/resources/gardens/seasonalchart.pdf",
-    "https://www.fresnocountyca.gov/files/sharedassets/county/v/1/public-works-and-planning/community-development-division/26803-harvest.pdf"
+    "https://www.fresnocountyca.gov/files/sharedassets/county/v/1/public-works-and-planning/community-development-division/26803-harvest.pdf",
+    "https://gathergrove.com/guides/pear-season-california",
+    "https://www.foodforestnursery.com/growing-guides/fruit-trees/pear-trees/when-are-pears-in-season/"
   ],
   "windows": [
     {
       "verdict": "in-season",
       "start": "07-16",
-      "end": "07-31",
-      "origin": "California"
-    },
-    {
-      "verdict": "peak",
-      "start": "08-01",
-      "end": "09-30",
-      "origin": "California"
-    },
-    {
-      "verdict": "in-season",
-      "start": "10-01",
       "end": "10-31",
       "origin": "California"
     },
@@ -31,5 +21,16 @@
       "origin": "California and Washington",
       "note": "held in controlled-atmosphere storage since fall"
     }
-  ]
+  ],
+  "varieties": {
+    "bartlett": {
+      "windows": [{ "verdict": "peak", "start": "08-01", "end": "09-15" }]
+    },
+    "bosc": {
+      "windows": [{ "verdict": "peak", "start": "09-16", "end": "10-31" }]
+    },
+    "anjou": {
+      "windows": [{ "verdict": "peak", "start": "09-16", "end": "10-15" }]
+    }
+  }
 }
