@@ -1,0 +1,16 @@
+{
+  "slug": "banana",
+  "lastReviewed": "2026-08-23",
+  "sources": [
+    "https://www.thepacker.com/news/produce-crops/banana-imports-rise-volume-and-value",
+    "https://www.usimportdata.com/blogs/us-banana-imports-where-does-the-us-import-bananas-from"
+  ],
+  "windows": [
+    {
+      "verdict": "imported",
+      "start": "01-01",
+      "end": "12-31",
+      "origin": "Guatemala, Ecuador, and Costa Rica"
+    }
+  ]
+}

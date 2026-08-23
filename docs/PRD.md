@@ -2,7 +2,7 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.14
+**Version:** 1.15
 **Last updated:** 2026-08-23
 **Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
@@ -105,7 +105,7 @@ Storing dates rather than fixed period indices decouples storage precision from 
 
 ### 5.4 Data provenance
 
-Every window carries its citations in the data file, shown to the shopper in the detail view. Across 33 fruits the dataset draws on 30 distinct sources, and their reliability is uneven. Listing them by tier is the honest way to describe what this product actually knows.
+Every window carries its citations in the data file, shown to the shopper in the detail view. Across 36 fruits the dataset draws on 30 distinct sources, and their reliability is uneven. Listing them by tier is the honest way to describe what this product actually knows.
 
 **Government and university sources** — the strongest, used for the crops they cover.
 
@@ -145,9 +145,11 @@ Every data file carries a `lastReviewed` ISO date, shown in the Sources section 
 
 ### 6.1 Coverage
 
-Approximately 30 fruits — the realistic year-round inventory of a California grocery store. Coverage deliberately includes fruits that are currently out of season, because "skip the strawberries in December" is half the product's value.
+Approximately 35 fruits — the realistic year-round inventory of a California grocery store. Coverage deliberately includes fruits that are currently out of season, because "skip the strawberries in December" is half the product's value.
 
-Indicative list: apple, apricot, avocado, blackberry, blueberry, cantaloupe, cherimoya, cherry, date, fig, grape, grapefruit, guava, kiwi, kumquat, lemon, lime, mandarin, mango, nectarine, orange (navel, Valencia, and blood treated separately, per §7.1), passion fruit, peach, pear, persimmon, plum/pluot, pomegranate, raspberry, strawberry, watermelon.
+**Year-round imports are in scope even though they carry no seasonal signal.** Banana, pineapple, and lime resolve to `Imported` on every day of the year; their cards never change. They are included because the test is what a shopper stands in front of, not whether the app has something interesting to say — and omitting the most-bought fruit in the country would read as an oversight rather than a judgement. Their value is in the detail view, where ripeness and storage are the actual purchase decision. Banana was missed until 2026-08-23 precisely because it has no season; lime had been in from the start on the same reasoning, which made the omission an inconsistency rather than a choice.
+
+Indicative list: apple, apricot, avocado, banana, blackberry, blueberry, cantaloupe, cherimoya, cherry, date, fig, grape, grapefruit, guava, honeydew, kiwi, kumquat, lemon, lime, mandarin, mango, nectarine, orange (navel, Valencia, and blood treated separately, per §7.1), passion fruit, peach, pear, persimmon, pineapple, plum/pluot, pomegranate, raspberry, strawberry, watermelon.
 
 ### 6.2 Vegetables
 
@@ -165,7 +167,7 @@ California is the launch region and the permanent default. A region picker is a 
 
 This collapses two of the three regions originally planned for milestone 4 into one, leaving **California and the Pacific Northwest**.
 
-**Explicit cost note for Andrew:** each additional region is a full authoring and sourcing pass — 33 fruits, sourced from that region's own extension service. This is the single largest ongoing content cost in the product. The architecture supports regions from milestone 1; the data does not exist until someone writes it.
+**Explicit cost note for Andrew:** each additional region is a full authoring and sourcing pass — 36 fruits, sourced from that region's own extension service. This is the single largest ongoing content cost in the product. The architecture supports regions from milestone 1; the data does not exist until someone writes it.
 
 Two things make the second region cheaper than the first, and they are worth knowing before estimating the third. Winter is close to nationally uniform — a store in Portland and one in Los Angeles are both selling Chilean, Peruvian, and Mexican fruit from roughly November to April — so much of a region file is import windows that differ only in origin. And the fruit list itself changes: citrus and the subtropicals have no Pacific Northwest harvest at all and resolve to imported, often imported *from California*.
 
@@ -440,7 +442,7 @@ Region picker UI, `localStorage` persistence, plus authored data for the Pacific
 
 `FruitDetail` was reading a hardcoded `'Southern California'` and now reads `region.name`, so it needs nothing further. `region.json` still carries `lastReviewed: null`; that field is meant to let a shopper judge how current a region's data is and has no UI yet.
 
-**Data is the milestone.** 33 fruits, sourced from that region's own extension service — WSU Tree Fruit and OSU Extension both publish real harvest calendars, which is a stronger footing than several California entries have (see the known weaknesses in §5.4).
+**Data is the milestone.** 36 fruits, sourced from that region's own extension service — WSU Tree Fruit and OSU Extension both publish real harvest calendars, which is a stronger footing than several California entries have (see the known weaknesses in §5.4).
 
 Two things make this cheaper than authoring California was, and one makes it different rather than cheaper:
 
@@ -485,7 +487,7 @@ Secondary, measurable without any analytics backend:
 
 **Marking farmers-market-only fruits** — no. Andrew's reasoning, 2026-08-23: it adds complexity, and the framing is wrong. A shopper who cannot find cherimoya should come away feeling their grocery store is not carrying enough of the good stuff, not feeling they are in the wrong place. The app describes what is worth buying; where to buy it is the shopper's problem and a matter of local knowledge this app has no way to hold.
 
-**Art direction** — closed by events. The USDA Pomological Watercolor Collection was adopted, and every one of the 33 fruits now ships a real plate rather than a placeholder. Painters are credited per fruit in the detail view and collectively on the illustrations page, and `docs/art-sources.md` records source and attribution for each. The generated supplements are disclosed as generated, per the policy in §8.5.
+**Art direction** — closed by events. The USDA Pomological Watercolor Collection was adopted, and every one of the 36 fruits now ships a real plate rather than a placeholder. Painters are credited per fruit in the detail view and collectively on the illustrations page, and `docs/art-sources.md` records source and attribution for each. The generated supplements are disclosed as generated, per the policy in §8.5.
 
 **An About screen explaining the verdict system** — not needed. Andrew's call, 2026-08-23: the verdicts stand on their own. Recorded with the counter-argument, so a future reader knows it was weighed rather than missed: `From storage` is both the verdict carrying the product's differentiating insight and the one most open to misreading, since without context it can read as a warning that the fruit is old rather than as "this is normal, the flavour has just faded." If that ever proves to be a problem in practice, the fix is a line of explanation in the detail view where the verdict is used — not a first-run overlay, which would undercut the launch the cover screen was built to make feel deliberate.
 
@@ -512,3 +514,4 @@ Secondary, measurable without any analytics backend:
 | 1.12 | 2026-08-23 | Closed all three open questions in §12; cantaloupe named to variety, guava renamed Tropical guava to disambiguate it from feijoa |
 | 1.13 | 2026-08-23 | Launch region renamed Southern California to California, matching how its windows were already sourced; §6.3 reframed around supply sheds, collapsing milestone 4 to two regions |
 | 1.14 | 2026-08-23 | Milestone 4 rewritten with its remaining code blockers, sourcing notes, and the ways a second region differs from the first |
+| 1.15 | 2026-08-23 | Banana, pineapple, and honeydew added; §6.1 records that year-round imports are in scope. Coverage now 36 fruits |

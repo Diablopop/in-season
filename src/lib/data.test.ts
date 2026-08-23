@@ -38,7 +38,7 @@ describe('catalog', () => {
   // losing one to a bad merge, is not. Bumping this number is the deliberate
   // step that says the change was meant.
   it('covers the fruits the PRD scopes', () => {
-    expect(fruits.length).toBe(33)
+    expect(fruits.length).toBe(36)
   })
 
   it('has matching slugs inside and across both files', () => {
@@ -317,7 +317,8 @@ describe('art credits', () => {
       .map((fr) => fr.slug)
       .sort()
     expect(generated).toEqual([
-      'cantaloupe', 'cherimoya', 'date', 'kiwi', 'kumquat', 'pluot', 'watermelon',
+      'banana', 'cantaloupe', 'cherimoya', 'date', 'honeydew', 'kiwi', 'kumquat',
+      'pluot', 'watermelon',
     ])
   })
 })

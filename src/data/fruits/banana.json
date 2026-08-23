@@ -1,0 +1,12 @@
+{
+  "slug": "banana",
+  "name": "Banana",
+  "botanicalName": "Musa acuminata",
+  "category": "fruit",
+  "selection": "Buy to match when you will eat them, not what looks best. Green-tipped fruit is three or four days off, solid yellow is ready, and brown speckles mean the starch has turned to sugar — when most people prefer eating and the only ones worth baking with.",
+  "storage": "Counter, never the refrigerator: cold blackens the peel within hours and stops the ripening for good. Splitting the bunch and separating the stems slows things down a little.",
+  "ripensAfterPicking": true,
+  "credit": {
+    "source": "AI generated"
+  }
+}

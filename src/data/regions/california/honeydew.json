@@ -1,0 +1,30 @@
+{
+  "slug": "honeydew",
+  "lastReviewed": "2026-08-23",
+  "sources": [
+    "https://www.thepacker.com/news/produce-crops/harvest-dates-near-california-melons",
+    "https://californiagrown.org/blog/how-to-tell-if-watermelons-are-ripe/",
+    "http://geisseler.ucdavis.edu/Guidelines/Melon_Production_CA.pdf"
+  ],
+  "windows": [
+    {
+      "verdict": "in-season",
+      "start": "06-01",
+      "end": "06-30",
+      "origin": "California",
+      "note": "desert crop coming on"
+    },
+    {
+      "verdict": "peak",
+      "start": "07-01",
+      "end": "09-30",
+      "origin": "California"
+    },
+    {
+      "verdict": "in-season",
+      "start": "10-01",
+      "end": "10-31",
+      "origin": "California"
+    }
+  ]
+}

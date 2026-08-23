@@ -1,0 +1,16 @@
+{
+  "slug": "pineapple",
+  "lastReviewed": "2026-08-23",
+  "sources": [
+    "https://www.freshfruitportal.com/news/2023/09/13/costa-rica-accounts-for-84-of-u-s-pineapple-imports/",
+    "https://www.freshplaza.com/north-america/article/9770672/u-s-fresh-pineapple-consumption-rises-as-imports-grow/"
+  ],
+  "windows": [
+    {
+      "verdict": "imported",
+      "start": "01-01",
+      "end": "12-31",
+      "origin": "Costa Rica"
+    }
+  ]
+}

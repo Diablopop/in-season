@@ -1,0 +1,14 @@
+{
+  "slug": "pineapple",
+  "name": "Pineapple",
+  "botanicalName": "Ananas comosus",
+  "category": "fruit",
+  "selection": "Heavy for its size and sweetly fragrant at the base — no smell means underripe, a fermented smell means past it. Colour is a poor guide and the pull-a-leaf test is a myth. Press the base: it should give slightly, with no soft or weeping patches.",
+  "storage": "Counter for a day or two to soften, then refrigerate. Cut fruit keeps under three days.",
+  "ripensAfterPicking": false,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "James Marion Shull",
+    "artistDates": "1872–1948"
+  }
+}
