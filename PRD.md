@@ -2,7 +2,7 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.6
+**Version:** 1.7
 **Last updated:** 2026-08-22
 **Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
@@ -105,12 +105,35 @@ Storing dates rather than fixed period indices decouples storage precision from 
 
 ### 5.4 Data provenance
 
-Harvest windows are derived from public agricultural sources and cited in the repository:
+Every window carries its citations in the data file, shown to the shopper in the detail view. Across 32 fruits the dataset draws on 30 distinct sources, and their reliability is uneven. Listing them by tier is the honest way to describe what this product actually knows.
 
-* California Department of Food and Agriculture crop reports
-* UC Agriculture and Natural Resources county crop calendars
-* California Department of Public Health "Harvest of the Month" educational materials
-* California Grown seasonality charts
+**Government and university sources** — the strongest, used for the crops they cover.
+
+* Fresno County harvest calendar (7 fruits) — stone fruit and pears
+* UC Davis, "It's Citrus Season" (6 fruits) — citrus
+* USDA Economic Research Service — apple production by state
+* CDFA seasonal chart, via the California Foundation for Agriculture in the Classroom (8 fruits) — but see the caveat below
+
+**Industry and commodity sources** — reliable on their own crop, and often the only party publishing specific dates.
+
+* Ventura Coastal (6 fruits) — citrus growing seasons
+* California Avocado Commission; USApple and the Northwest Horticultural Council on controlled-atmosphere storage; California Grown on winter fruit
+* The Packer and Fresh Fruit Portal (4 fruits each) — berry season reporting
+
+**Regional and consumer references** — weaker, used where nothing better publishes dates.
+
+* Seasonal Food Guide (Southern California pages), Visit California, Visit Oak Glen, California Rare Fruit Growers, Specialty Produce, LA Weekly's farmers market column
+
+### Known weaknesses
+
+Stated plainly, because a product whose premise is honesty should not overstate its own rigor.
+
+* **The CDFA chart's dates could not be read.** It encodes months as colored table cells rather than text, so it confirms which crops are covered but not when. **Cantaloupe, grape, and watermelon rest on it alone** and should be re-sourced.
+* **Five fruits cite a single source**: cantaloupe, grape, watermelon, guava, and passion fruit.
+* **Guava, passion fruit, and mango are the weakest entries**, resting on consumer guides and grower blogs rather than agricultural reporting.
+* **Berry import windows are inferred.** The California harvest windows are well sourced; the Mexico and Chile winter windows come from general trade reporting rather than a specific citation.
+* **Lime is a judgment call, not a sourced window.** It is modeled as imported from Mexico year-round because that reflects the shelf, not because a harvest calendar says so.
+* **Two sources named in earlier drafts did not work out.** UC Agriculture and Natural Resources publishes no month-specific harvest chart that could be cited, and CDPH's "Harvest of the Month" materials were not reachable in a citable form.
 
 Import-origin notes (for example, "typically Chile and Peru in January") are stated as *typical* patterns, never as certainties about a specific shipment.
 
@@ -426,3 +449,4 @@ Secondary, measurable without any analytics backend:
 | 1.4 | 2026-08-21 | Confirmed the watercolors as the art source with an AI supplement and disclosure policy; corrected §8.5 to opaque single-crop square assets; made per-variety art nullable; fixed card artwork (§7.1); added the textbook-plate design direction (§8.6) — pure white ground, light theme only, Source Serif 4 with Inter, rules instead of shadows |
 | 1.5 | 2026-08-22 | Moved into the app repository so the specification is versioned with the code it describes |
 | 1.6 | 2026-08-22 | Marked milestones 1–3 complete and verified; status moved from Draft to Active |
+| 1.7 | 2026-08-22 | Rewrote §5.4 to list the sources actually used, tiered by reliability, with known weaknesses named |
