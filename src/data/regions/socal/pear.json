@@ -4,6 +4,7 @@
   "sources": [
     "https://cdn.agclassroom.org/ca/resources/gardens/seasonalchart.pdf",
     "https://www.fresnocountyca.gov/files/sharedassets/county/v/1/public-works-and-planning/community-development-division/26803-harvest.pdf",
+    "https://www.calpear.com/farm-to-fork/info/",
     "https://gathergrove.com/guides/pear-season-california",
     "https://www.foodforestnursery.com/growing-guides/fruit-trees/pear-trees/when-are-pears-in-season/"
   ],
@@ -31,6 +32,9 @@
     },
     "anjou": {
       "windows": [{ "verdict": "peak", "start": "09-16", "end": "10-15" }]
+    },
+    "comice": {
+      "windows": [{ "verdict": "peak", "start": "09-16", "end": "10-31" }]
     }
   }
 }
