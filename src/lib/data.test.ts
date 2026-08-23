@@ -3,7 +3,7 @@ import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { resolve } from './season'
 import { entryWindows, resolveEntry, standoutVarieties, varietyHeadline } from './varieties'
-import type { Fruit, RegionItem, Verdict } from './types'
+import type { Fruit, RegionItem, SeasonWindow, Verdict } from './types'
 
 const FRUITS_DIR = 'src/data/fruits'
 const REGION_DIR = 'src/data/regions/socal'
@@ -100,6 +100,87 @@ describe('windows', () => {
       expect(
         best.some((v) => v === 'peak' || v === 'in-season' || v === 'imported'),
         `${it.slug} is never worth buying`,
+      ).toBe(true)
+    })
+  })
+})
+
+describe('authoring conventions', () => {
+  /*
+   * PRD §8.2 promises "a build-time validation rule flags off-boundary dates so
+   * that tightening a window is a deliberate, reviewable decision rather than a
+   * typo." That rule was described but never written, so nothing would have
+   * caught 03-14 where 03-15 was meant — a silent one-day error in a verdict.
+   *
+   * Measured against the data before being codified: all 109 windows already
+   * conform, so there are no historical exceptions to carve out. A crop that
+   * genuinely warrants finer precision is still allowed; it just has to change
+   * this test, which is the reviewable moment §8.2 asks for.
+   */
+  const lastDayOf = (month: number) => DAYS[month - 1]
+
+  const allWindows = (): { label: string; window: SeasonWindow }[] =>
+    items.flatMap((it) => [
+      ...it.windows.map((w) => ({ label: it.slug, window: w })),
+      ...Object.entries(it.varieties ?? {}).flatMap(([vs, v]) =>
+        v.windows.map((w) => ({ label: `${it.slug}/${vs}`, window: w })),
+      ),
+    ])
+
+  it('starts every window on the 1st or the 16th', () => {
+    allWindows().forEach(({ label, window }) => {
+      const [, day] = window.start.split('-').map(Number)
+      expect([1, 16], `${label} starts on day ${day} (${window.start})`).toContain(day)
+    })
+  })
+
+  it('ends every window on the 15th or the last day of its month', () => {
+    allWindows().forEach(({ label, window }) => {
+      const [month, day] = window.end.split('-').map(Number)
+      expect(
+        day === 15 || day === lastDayOf(month),
+        `${label} ends on ${window.end}, which is neither the 15th nor the last of the month`,
+      ).toBe(true)
+    })
+  })
+})
+
+describe('botanical names', () => {
+  /*
+   * This is the field where three errors reached production unnoticed — plum
+   * named as the European drying species, lime as the Key lime, blackberry as a
+   * European aggregate — because nothing checked it and, unlike a window, it
+   * carries no citation.
+   *
+   * A test cannot know that Prunus domestica is the wrong plum. It can only
+   * catch what is structurally wrong: a missing name, or one malformed enough
+   * to be a typo. Catching the species itself needs a source, which is §5.4's
+   * job, not this file's.
+   *
+   * Accepts the forms actually in use:
+   *   Malus domestica            genus and species
+   *   Citrus × sinensis          interspecific hybrid
+   *   Prunus salicina × armeniaca  named hybrid parents
+   *   Prunus persica var. nucipersica
+   *   Rubus subg. Rubus          named at subgenus where no clean binomial exists
+   *
+   * The × is U+00D7 in the pattern, so a lowercase "x" fails — that
+   * inconsistency was already present once and is invisible by eye.
+   */
+  const BINOMIAL =
+    /^[A-Z][a-z]+ (?:× [a-z]+|subg\. [A-Z][a-z]+|[a-z]+(?: (?:var\.|subsp\.) [a-z]+| × [a-z]+)?)$/
+
+  it('gives every fruit a botanical name', () => {
+    fruits.forEach((fr) => {
+      expect(fr.botanicalName, `${fr.slug} has no botanical name`).toBeTruthy()
+    })
+  })
+
+  it('writes them in a recognised form, with a real multiplication sign', () => {
+    fruits.forEach((fr) => {
+      expect(
+        BINOMIAL.test(fr.botanicalName ?? ''),
+        `${fr.slug}: "${fr.botanicalName}" is not a recognised binomial form`,
       ).toBe(true)
     })
   })

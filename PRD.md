@@ -2,7 +2,7 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.10
+**Version:** 1.11
 **Last updated:** 2026-08-23
 **Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
@@ -286,7 +286,9 @@ Separating region-independent content (how to pick an apple) from region-depende
 
 A window is expressed as a start date, an end date, and a verdict, each date stored as a month/day pair and compared by day-of-year. Windows may wrap the year boundary, which is required for navel oranges and most citrus.
 
-Authoring convention: start and end dates fall on the 1st or 16th of a month unless a specific crop justifies finer precision. A build-time validation rule flags off-boundary dates so that tightening a window is a deliberate, reviewable decision rather than a typo.
+Authoring convention: windows **start** on the 1st or the 16th and **end** on the 15th or the last day of the month, unless a specific crop justifies finer precision. Earlier drafts said start and end both fall on the 1st or 16th, which no window has ever done and which would leave a day uncovered at every boundary.
+
+This is enforced by tests as of 2026-08-23, having been described but unwritten since 1.1. All 109 existing windows already conformed, so a failure now means either a typo or a deliberate tightening — and the deliberate case is meant to change the test, which is the reviewable moment this convention exists to create. February ends on the 29th, not the 28th: dates compare as month and day, so the 29th is safe in every year and stopping at the 28th drops a day each leap year.
 
 ### 8.3 Security and privacy
 
@@ -432,7 +434,7 @@ Add the sharply seasonal vegetables from §6.2 and a fruit/vegetable filter.
 ## 10. Testing plan
 
 * **Unit tests** on date-to-verdict resolution: every fruit at all 24 half-month boundaries, plus the exact start and end date of every authored window and the days immediately either side of each. Also year-boundary wrapping, leap years (day-of-year shifts after February 29), and timezone edges near midnight.
-* **Data validation test** that fails the build if any fruit is missing a citation, has overlapping contradictory windows, or leaves a period unresolved.
+* **Data validation tests**, which literally fail the build: `npm run build` runs the suite before Vite, so a deploy cannot ship data that breaks a rule. They cover missing citations and review dates, unresolved days, malformed or impossible dates, off-convention window boundaries, and botanical names that are absent or malformed. What they cannot check is whether a window or a species is *true* — that is what §5.4's citations are for.
 * **Manual device testing** on iOS Safari and Android Chrome, including home screen installation and airplane-mode cold launch.
 * **Accuracy review**: Andrew spot-checks roughly ten fruits against an actual store visit before each region ships. This is the only test that catches genuinely wrong data.
 * **Lighthouse PWA audit** targeting installability and offline capability.
@@ -476,3 +478,4 @@ Secondary, measurable without any analytics backend:
 | 1.8 | 2026-08-23 | Added §7.5 for the cover screen; recorded the cream exception in §8.6, amended the §11 launch criterion it invalidated, and qualified the §3.1 one-tap goal |
 | 1.9 | 2026-08-23 | §7.1: recorded the seasonal argument for keeping citrus types separate, and the card-or-variety test for cultivars of one species; Cara Cara added as a navel variety |
 | 1.10 | 2026-08-23 | Blood orange added as its own card, the first application of the §7.1 card-or-variety test; coverage now 33 fruits |
+| 1.11 | 2026-08-23 | §8.2: corrected the boundary convention and recorded that it is now enforced; §10: tests now block the build |
