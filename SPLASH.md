@@ -2,9 +2,9 @@
 
 **Product:** In Season
 **Owner:** Andrew Schauer
-**Version:** 1.1
-**Last updated:** 2026-08-22
-**Status:** Active — milestones 1 and 2 shipped, 3 not started
+**Version:** 2.0
+**Last updated:** 2026-08-23
+**Status:** Complete — all three milestones shipped
 **Intended use:** Human reference and AI guidance
 
 ---
@@ -129,7 +129,7 @@ Date and region are currently absent from every fruit detail page — the masthe
 
 ## 9. Documentation changes required
 
-The PRD currently contradicts this feature in three places. Each should be amended in the same commit that ships it, so the specification does not describe an app that no longer exists.
+**Done 2026-08-23, PRD 1.8.** The PRD contradicted this feature in three places and did not mention it existed. Amended as below, plus a new §7.5 describing the cover itself.
 
 * **§11 success criteria** — "Cold launch to rendered answer in under one second" is no longer true by design. Reword to separate time-to-interactive from time-to-splash-clear.
 * **§3.1 goals** — "opening the app is the entire required interaction" still holds, but should acknowledge the cover.
@@ -155,7 +155,7 @@ The PRD currently contradicts this feature in three places. Each should be amend
 |---|---|---|
 | 1 ✅ | Mechanics — flat cream, live type, no imagery, font preload | Splash appears, holds, fades, skips on tap, clears with JavaScript disabled, absent under reduced motion |
 | 2 ✅ | Artwork — paper texture, apple, final typography and spacing | Renders correctly at 375px, 430px, and desktop widths, in browser and installed |
-| 3 | Documentation — PRD §3.1, §8.6, §11 amendments | PRD no longer contradicts the shipped app |
+| 3 ✅ | Documentation — PRD §3.1, §7.5, §8.6, §11 | PRD no longer contradicts the shipped app |
 
 **Milestone 2 verified 2026-08-22.** Composition follows the concept art — apple above the wordmark, date and region beneath. The apple is sized `min(52vw, 250px, 36vh)`: the first two set proportion and a ceiling, the third keeps the composition inside a short screen. Without that third term a phone held in landscape needs about 376px of content in a 375px viewport. Confirmed unchanged at 375 × 812 (195px) and correctly constrained at 667 × 375 (135px, everything fits). Note that a landscape phone could not be emulated directly — above 768px wide the tooling reports a mouse, which is the desktop path — so that case is reasoned and arithmetic-checked rather than observed.
 
@@ -189,3 +189,4 @@ The PRD currently contradicts this feature in three places. Each should be amend
 | 1.7 | 2026-08-22 | Fade shortened to 450ms and switched from ease-in to ease-out, which was the actual cause of the apple appearing to ghost |
 | 1.8 | 2026-08-22 | Fade cut to 150ms — effectively a cut; artwork is above half opacity for 51ms, down from ~370ms |
 | 1.9 | 2026-08-22 | Hold extended to 850ms, total 1000ms — settled; D1 rewritten, having accumulated contradictory notes across the tuning passes |
+| 2.0 | 2026-08-23 | Milestone 3 shipped — PRD 1.8 amended and §7.5 added. Feature complete; remaining risk is whether it earns its place over repeated use |

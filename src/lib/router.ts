@@ -5,9 +5,16 @@ const read = () => window.location.hash.replace(/^#\/?/, '')
 /**
  * Hash routing with scroll memory, deliberately dependency-free.
  *
- * A hash route needs no server rewrite rule, which keeps the app deployable to
- * any static host and, more importantly, keeps deep links working offline once
- * the service worker is serving from cache.
+ * A hash route needs no server rewrite rule: the fragment never reaches the
+ * server, so every URL is a request for index.html and the app deploys to any
+ * static host as-is. Clean URLs would need the host told to serve index.html
+ * for unknown paths, which is a few lines of vercel.json and the only thing
+ * standing between this and /apple instead of /#/apple.
+ *
+ * That is the whole argument. An earlier version of this comment also claimed
+ * hash routing was what kept deep links working offline; it is not. The
+ * generated service worker registers a navigation route bound to index.html,
+ * so a clean URL would be served from precache offline just as well.
  *
  * Opening a fruit jumps to the top; coming back restores where the list was.
  * Dumping the shopper at the top after every fruit would make them re-scroll

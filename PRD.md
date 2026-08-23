@@ -2,8 +2,8 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.7
-**Last updated:** 2026-08-22
+**Version:** 1.8
+**Last updated:** 2026-08-23
 **Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
 
@@ -31,7 +31,7 @@ Existing seasonality resources are either printed PDFs from agricultural extensi
 
 ### 3.1 Goals
 
-* Deliver the primary answer within one tap — opening the app is the entire required interaction.
+* Deliver the primary answer within one tap — opening the app is the entire required interaction. A brief cover screen precedes it on phones (§7.5); it is skippable, and it asks nothing of the shopper.
 * Be honest about data limitations rather than projecting false precision.
 * Work fully offline once installed, since grocery stores frequently have poor connectivity.
 * Install to a phone home screen and launch like a native app.
@@ -227,6 +227,21 @@ Detail content is deliberately short: roughly 100–150 words per fruit. Depth b
 * The date is reduced to a day-of-year value and evaluated against each fruit's windows in the local timezone. Year-wrapping windows (navel oranges and most citrus) are handled by the comparison, not by special-casing the data.
 * An edge case to test: a device with a badly wrong clock will show wrong data. This is acceptable and not worth mitigating, but the visible date in the header lets the user notice it.
 
+### 7.5 Cover screen
+
+A cream, paper-textured cover shown at launch on phones, carrying the watercolor apple and the app name, which dissolves into the white home screen. Detailed scope, decisions, and verification are in `SPLASH.md`; this section records what it is and why the specification above tolerates it.
+
+**It is a manufactured delay, not a loading indicator.** Nothing is being fetched: the shell and dataset are precached and the app paints immediately. It exists for identity and for a moment of drama opening the app in a store. Stating that plainly is the point — a product built on not overstating what it knows should not describe a deliberate pause as though it were work being done.
+
+* **1000ms total** — 850ms holding on the artwork, then a 150ms fade. The split matters more than the total: dwell time on the artwork is the whole effect, and a long fade reads as lag rather than atmosphere. Both are single CSS custom properties.
+* **Skippable by any tap or key press**, which is what keeps the cost near zero for a shopper in a hurry. The app is fully rendered and interactive underneath the cover from the first frame.
+* **Phones and touch devices only.** A cover screen on a desktop reads as old-fashioned. Keyed to the pointer rather than a width breakpoint, because a desktop browser dragged narrow is still a desktop and a phone held in landscape is still a phone.
+* **Absent entirely under `prefers-reduced-motion: reduce`**, per §8.4.
+* **Cleared by a CSS animation rather than by script**, so a failed bundle cannot strand a shopper behind it.
+* **Carries no date or region.** A screen that disappears cannot be where a shopper checks what day a verdict is for; that belongs to the masthead.
+
+**The honest risk is that the novelty wears off before the delay does.** The test is the tenth launch in a store, not the first. It is built as one self-contained block so that removing it is a revert rather than a project.
+
 ---
 
 ## 8. Technical approach
@@ -340,6 +355,7 @@ They are PNG rather than WebP because no WebP encoder is present on Andrew's mac
 #### Ground and palette
 
 * **Pure white page.** Not cream, not bone. Aged paper only reads as *paper* when something genuinely white sits beside it; against a cream interface the same tone reads as dirty. The usual objection to pure white — harshness — does not apply to an app used in a brightly lit grocery store in daylight.
+* **One exception: the cover screen is cream** (§7.5). A cover is different stock from the pages, which is the whole reason the book metaphor survives the contradiction — the cream is never on screen beside the plates, it gives way to them. This is a deliberate exception, recorded here so the rule above is not read as broken.
 * **Near-black ink, very slightly warm.** Not `#000`.
 * **One neutral gray** for rules.
 * **Five verdict colors**, and essentially no other color in the interface. Against white with muted artwork surrounding them, saturated verdict badges carry the functional signal without competing for attention. Verdict colors must still satisfy §8.4 — distinguishable by label and icon, not by hue alone.
@@ -422,7 +438,7 @@ The MVP succeeds if Andrew opens it in a store and it changes a purchase decisio
 
 Secondary, measurable without any analytics backend:
 
-* Cold launch to rendered answer in under one second on a mid-range phone.
+* Cold launch to a rendered answer in under one second on a mid-range phone, measured from when the cover clears. The app is painted and interactive underneath the cover throughout, so this measures readiness rather than waiting; the cover adds a deliberate 1000ms on phones (§7.5) and can be skipped with a tap.
 * Fully functional with the network disabled.
 * Installed to Andrew's home screen and used unprompted more than once.
 
@@ -450,3 +466,4 @@ Secondary, measurable without any analytics backend:
 | 1.5 | 2026-08-22 | Moved into the app repository so the specification is versioned with the code it describes |
 | 1.6 | 2026-08-22 | Marked milestones 1–3 complete and verified; status moved from Draft to Active |
 | 1.7 | 2026-08-22 | Rewrote §5.4 to list the sources actually used, tiered by reliability, with known weaknesses named |
+| 1.8 | 2026-08-23 | Added §7.5 for the cover screen; recorded the cream exception in §8.6, amended the §11 launch criterion it invalidated, and qualified the §3.1 one-tap goal |
