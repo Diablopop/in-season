@@ -24,7 +24,7 @@ This is a deliberate, manufactured delay. There is no load time to mask — the 
 * Give the launch a deliberate, crafted moment consistent with the textbook-plate direction.
 * Make the cream-to-white transition the mechanism, so the delay reads as a dissolve rather than a wait.
 * Cost approximately nothing to a hurried shopper, via a skip on any interaction.
-* Work identically in a browser tab, an installed iOS app, and an installed Android app, from one implementation.
+* Work identically in a mobile browser tab, an installed iOS app, and an installed Android app, from one implementation.
 
 ### 2.2 Non-goals
 
@@ -42,6 +42,8 @@ This is a deliberate, manufactured delay. There is no load time to mask — the 
 4. Any tap, click, or key press skips immediately with a short fade.
 5. Once faded, the node is removed from the DOM.
 
+On a device with a mouse, none of the above happens — see D7. The cover is `display: none` and the script removes it on load, so a desktop user never sees a cover screen at all.
+
 **Failure behavior.** The fade is driven by a CSS animation, not by JavaScript. If the bundle fails to load or throws, the splash still clears itself and sets `pointer-events: none`, so a script error can never trap Andrew behind a cover screen. JavaScript only adds skip-on-interaction and the DOM cleanup.
 
 ---
@@ -55,6 +57,7 @@ This is a deliberate, manufactured delay. There is no load time to mask — the 
 | D3 | Frequency | **Every cold start, no session cap** | Capping produces inconsistent behavior that is harder to reason about than always-on. iOS evicts installed PWAs aggressively, so cold starts will be common — which is an argument for D2, not for capping. |
 | D4 | Reduced motion | **Skip the splash entirely** under `prefers-reduced-motion: reduce` | A full-screen cross-fade is exactly what that preference asks to avoid. Required by PRD §8.4. |
 | D5 | Cover fonts | **Cover-scoped `@font-face` at `font-display: block`, plus preload.** Pulled forward into milestone 1. Preload alone was not enough — see below. | `font-display: swap` means the title would otherwise render in Georgia and swap mid-splash on a cold browser load. Costs 122KB earlier in the waterfall on first visit only; precached thereafter. |
+| D7 | Where it appears | **Phones and touch devices only.** Andrew's call: a cover screen on a desktop reads as old-fashioned, and the drama is for a phone in a store. Keyed to `(hover: hover) and (pointer: fine)` rather than a width breakpoint, because width gets both edges wrong — a desktop browser dragged narrow is still a desktop, and a phone in landscape is still a phone. Costs one media query and no JavaScript: it reuses the `display: none` path reduced motion already established. |
 | D6 | Manifest colors | `background_color` → cream; **`theme_color` stays `#ffffff`** | `background_color` backs the Android launch screen, so cream prevents a white flash before the cream splash. `theme_color` tints browser and status bar chrome, which sits against the white app for the whole session — cream there would be a permanent mismatch to fix a 900ms one. |
 
 ---
@@ -173,3 +176,4 @@ The PRD currently contradicts this feature in three places. Each should be amend
 | 1.0 | 2026-08-22 | Initial scope |
 | 1.1 | 2026-08-22 | Decisions settled; milestone 1 shipped and verified; font preload pulled forward from milestone 2; recorded the skip hit-testing defect and its fix |
 | 1.2 | 2026-08-22 | Preload alone did not stop the font swap; cover now declares its own families inline at font-display: block |
+| 1.3 | 2026-08-22 | D7 added — cover is limited to touch devices and never shown on desktop |

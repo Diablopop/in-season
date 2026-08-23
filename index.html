@@ -98,9 +98,22 @@
         }
       }
 
-      /* A full-screen cross-fade is precisely what this preference asks to be
-         spared. Skip the cover rather than shorten it. */
-      @media (prefers-reduced-motion: reduce) {
+      /*
+        Two conditions under which there is no cover at all.
+
+        Reduced motion: a full-screen cross-fade is precisely what that
+        preference asks to be spared, so skip it rather than shorten it.
+
+        A mouse: a cover screen on a desktop reads as old-fashioned, and the
+        drama here is for a phone in a store. Keyed to the pointer rather than
+        the window width, because width gets both edges wrong — a desktop
+        browser dragged narrow is still a desktop, and a phone held in
+        landscape is still a phone.
+
+        Either way the script below sees display: none and removes the node
+        immediately, so this needs no JavaScript of its own.
+      */
+      @media (prefers-reduced-motion: reduce), (hover: hover) and (pointer: fine) {
         .cover { display: none; }
       }
     </style>
