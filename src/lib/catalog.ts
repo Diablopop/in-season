@@ -6,7 +6,7 @@ const fruitModules = import.meta.glob<Fruit>('../data/fruits/*.json', {
   import: 'default',
 })
 const regionModules = import.meta.glob<RegionItem>(
-  '../data/regions/socal/*.json',
+  '../data/regions/california/*.json',
   { eager: true, import: 'default' },
 )
 
@@ -27,5 +27,5 @@ export const catalog: CatalogEntry[] = Object.entries(fruitModules)
   })
   .filter((e): e is CatalogEntry => e !== null)
 
-export const region = regionModules['../data/regions/socal/region.json'] as
+export const region = regionModules['../data/regions/california/region.json'] as
   | unknown as { name: string; lastReviewed: string | null }

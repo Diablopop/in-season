@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react'
+import { region } from '../lib/catalog'
 import type { CatalogEntry } from '../lib/catalog'
 import { label, note } from '../lib/notes'
 import { resolve, resolveVariety } from '../lib/season'
@@ -91,7 +92,7 @@ export function FruitDetail({ entry, md }: { entry: CatalogEntry; md: MonthDay }
       <section className="detail__section sources">
         <h3>Sources</h3>
         <p>
-          Harvest windows for {fruit.name.toLowerCase()} in {'Southern California'}
+          Harvest windows for {fruit.name.toLowerCase()} in {region.name}
           {item.lastReviewed ? `, last checked ${item.lastReviewed}` : ''}.
         </p>
         <ul>

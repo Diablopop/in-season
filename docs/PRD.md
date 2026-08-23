@@ -2,7 +2,7 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.12
+**Version:** 1.13
 **Last updated:** 2026-08-23
 **Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
@@ -49,7 +49,7 @@ Existing seasonality resources are either printed PDFs from agricultural extensi
 
 ## 4. Target user
 
-A home cook shopping at a mainstream Southern California grocery store or farmers market. Moderately curious about food, not an expert. Has a phone in hand, possibly one-handed while pushing a cart. Wants a fast verdict, and occasionally wants to understand *why* — for example, which apple variety is actually good right now, or why the blueberries are expensive and bland.
+A home cook shopping at a mainstream California grocery store or farmers market. Moderately curious about food, not an expert. Has a phone in hand, possibly one-handed while pushing a cart. Wants a fast verdict, and occasionally wants to understand *why* — for example, which apple variety is actually good right now, or why the blueberries are expensive and bland.
 
 Primary usage context: standing in a produce aisle, distracted, on a phone, possibly with degraded network.
 
@@ -67,7 +67,7 @@ This is the conceptual core of the product and the area of greatest risk to cred
 2. Whether the fruit on the shelf today came from that local harvest, from long-term storage, or from an importing country.
 3. Whether the fruit will actually taste good.
 
-A binary in/out label is misleading for exactly the fruits shoppers care most about. An apple sold in Southern California in April is genuinely a California apple, but it was picked the previous September and held in controlled-atmosphere storage for seven months. A December blueberry is real, edible, and flown in from Peru.
+A binary in/out label is misleading for exactly the fruits shoppers care most about. An apple sold in California in April is genuinely a California apple, but it was picked the previous September and held in controlled-atmosphere storage for seven months. A December blueberry is real, edible, and flown in from Peru.
 
 ### 5.2 The verdict system
 
@@ -87,7 +87,7 @@ The `From storage` verdict is the differentiating feature. No mainstream seasona
 
 Harvest windows are **stored as calendar dates** (month and day, compared by day-of-year) but **authored at half-month boundaries** — the 1st and 16th — as the default convention.
 
-Monthly resolution is not accurate enough for the crops that matter most: Southern California cherries are roughly a three-week event, and a monthly calendar misrepresents them as a two-month crop.
+Monthly resolution is not accurate enough for the crops that matter most. California cherries are authored as a six-week peak from Fresno County's calendar, and apricots as eight; a monthly grid rounds both outward by up to two weeks at each end, which is most of a short crop's shoulder. Southern California's own cherry crop is nearer three weeks, which a monthly calendar would misrepresent as two months.
 
 Weekly resolution is rejected as false precision. The cited sources in §5.4 publish at month granularity, occasionally softened with "early" or "late" — half-month is already a mild interpolation on top of them, and there is no source to cite for "cherries peak in week 21." Harvest dates also shift ±1–2 weeks year to year with winter chill hours, spring heat, and rain, so the biological variance exceeds either resolution:
 
@@ -145,7 +145,7 @@ Every data file carries a `lastReviewed` ISO date, shown in the Sources section 
 
 ### 6.1 Coverage
 
-Approximately 30 fruits — the realistic year-round inventory of a Southern California grocery store. Coverage deliberately includes fruits that are currently out of season, because "skip the strawberries in December" is half the product's value.
+Approximately 30 fruits — the realistic year-round inventory of a California grocery store. Coverage deliberately includes fruits that are currently out of season, because "skip the strawberries in December" is half the product's value.
 
 Indicative list: apple, apricot, avocado, blackberry, blueberry, cantaloupe, cherimoya, cherry, date, fig, grape, grapefruit, guava, kiwi, kumquat, lemon, lime, mandarin, mango, nectarine, orange (navel, Valencia, and blood treated separately, per §7.1), passion fruit, peach, pear, persimmon, plum/pluot, pomegranate, raspberry, strawberry, watermelon.
 
@@ -153,17 +153,23 @@ Indicative list: apple, apricot, avocado, blackberry, blueberry, cantaloupe, che
 
 **Deferred to phase 2**, with the data schema built to accommodate them from day one via a `category` field.
 
-Rationale: Southern California vegetable supply is far less seasonal than fruit. Lettuce, brassicas, and carrots rotate between the Salinas and Yuma growing regions to produce near-year-round local supply, so most vegetable entries would read "in season" for ten or more months and dilute the signal that makes the fruit view useful.
+Rationale: California vegetable supply is far less seasonal than fruit. Lettuce, brassicas, and carrots rotate between the Salinas and Yuma growing regions to produce near-year-round local supply, so most vegetable entries would read "in season" for ten or more months and dilute the signal that makes the fruit view useful.
 
 Phase 2 will add only vegetables with genuinely sharp seasons: asparagus, artichoke, sweet corn, tomato, winter squash, snap peas, English peas, fava beans, and chard/hearty greens.
 
 ### 6.3 Regions
 
-Southern California is the launch region and the permanent default. A region picker is a committed requirement, delivered in milestone 4.
+California is the launch region and the permanent default. A region picker is a committed requirement, delivered in milestone 4.
 
-**Explicit cost note for Andrew:** each additional region is a full authoring and sourcing pass — roughly 30 fruits × 5 verdicts × 24 half-month authoring slots, sourced from that region's own extension service. This is the single largest ongoing content cost in the product. The architecture supports regions from milestone 1; the data does not exist until someone writes it. Planned launch regions for milestone 4: Southern California, Central/Northern California, and Pacific Northwest. Additional regions are added as data becomes available, not on a schedule.
+**Regions are supply sheds, not geographies.** The question a region answers is what reaches a store, not what grows within some boundary — and those differ, because a handful of growing regions feed the whole country. This is why the launch region was renamed from Southern California to California on 2026-08-23: the windows were already sourced that way. Cherry and apricot come from Fresno County in the Central Valley, strawberry from statewide industry reporting, apple's storage window from Washington. Only Oak Glen and LA Weekly's farmers market column were distinctly Southern. The subtropicals — avocado, dates, cherimoya, tropical guava — grow only in the south, but that is simply where California grows them.
 
-The picker never blocks first use. The app defaults to Southern California, remembers a changed selection in `localStorage`, and never requests geolocation permission.
+This collapses two of the three regions originally planned for milestone 4 into one, leaving **California and the Pacific Northwest**.
+
+**Explicit cost note for Andrew:** each additional region is a full authoring and sourcing pass — 33 fruits, sourced from that region's own extension service. This is the single largest ongoing content cost in the product. The architecture supports regions from milestone 1; the data does not exist until someone writes it.
+
+Two things make the second region cheaper than the first, and they are worth knowing before estimating the third. Winter is close to nationally uniform — a store in Portland and one in Los Angeles are both selling Chilean, Peruvian, and Mexican fruit from roughly November to April — so much of a region file is import windows that differ only in origin. And the fruit list itself changes: citrus and the subtropicals have no Pacific Northwest harvest at all and resolve to imported, often imported *from California*.
+
+The picker never blocks first use. The app defaults to California, remembers a changed selection in `localStorage`, and never requests geolocation permission.
 
 ---
 
@@ -236,7 +242,7 @@ Detail content is deliberately short: roughly 100–150 words per fruit. Depth b
 
 ### 7.5 Cover screen
 
-A cream, paper-textured cover shown at launch on phones, carrying the watercolor apple and the app name, which dissolves into the white home screen. Detailed scope, decisions, and verification are in `SPLASH.md`; this section records what it is and why the specification above tolerates it.
+A cream, paper-textured cover shown at launch on phones, carrying the watercolor apple and the app name, which dissolves into the white home screen. Detailed scope, decisions, and verification are in `SPLASH.md`, kept in the project folder rather than this repository; this section records what it is and why the specification above tolerates it.
 
 **It is a manufactured delay, not a loading indicator.** Nothing is being fetched: the shell and dataset are precached and the app paints immediately. It exists for identity and for a moment of drama opening the app in a store. Stating that plainly is the point — a product built on not overstating what it knows should not describe a deliberate pause as though it were work being done.
 
@@ -276,7 +282,7 @@ Proposed shape:
 ```
 data/
   regions/
-    socal.json          # region metadata + per-fruit windows
+    california.json     # region metadata + per-fruit windows
   fruits/
     apple.json          # region-independent content: how to pick, storage, varieties
   sources.md            # citations, one per claim group
@@ -408,7 +414,7 @@ Each milestone is independently testable and independently deployable.
 Live at <https://in-season-grocery.vercel.app/>, source at <https://github.com/Diablopop/in-season>.
 
 ### Milestone 1 — Data foundation ✅ Complete
-Define the JSON schema. Author and cite Southern California windows for all ~30 fruits. Build the date-to-verdict resolution logic with unit tests. No UI.
+Define the JSON schema. Author and cite California windows for all ~30 fruits. Build the date-to-verdict resolution logic with unit tests. No UI.
 **Testable when:** a test suite proves that given a date, each fruit resolves to the expected verdict — including year-wrapping citrus windows, half-month boundaries, and the day-precision windows authored for short crops.
 **Verified 2026-08-22:** 30 tests pass. All 32 fruits carry sourced windows, citations, and a review date, enforced by a build-time validation test.
 
@@ -461,7 +467,7 @@ Secondary, measurable without any analytics backend:
 
 **Marking farmers-market-only fruits** — no. Andrew's reasoning, 2026-08-23: it adds complexity, and the framing is wrong. A shopper who cannot find cherimoya should come away feeling their grocery store is not carrying enough of the good stuff, not feeling they are in the wrong place. The app describes what is worth buying; where to buy it is the shopper's problem and a matter of local knowledge this app has no way to hold.
 
-**Art direction** — closed by events. The USDA Pomological Watercolor Collection was adopted, and every one of the 33 fruits now ships a real plate rather than a placeholder. Painters are credited per fruit in the detail view and collectively on the illustrations page, and `art-sources.md` records source and attribution for each. The generated supplements are disclosed as generated, per the policy in §8.5.
+**Art direction** — closed by events. The USDA Pomological Watercolor Collection was adopted, and every one of the 33 fruits now ships a real plate rather than a placeholder. Painters are credited per fruit in the detail view and collectively on the illustrations page, and `docs/art-sources.md` records source and attribution for each. The generated supplements are disclosed as generated, per the policy in §8.5.
 
 **An About screen explaining the verdict system** — not needed. Andrew's call, 2026-08-23: the verdicts stand on their own. Recorded with the counter-argument, so a future reader knows it was weighed rather than missed: `From storage` is both the verdict carrying the product's differentiating insight and the one most open to misreading, since without context it can read as a warning that the fruit is old rather than as "this is normal, the flavour has just faded." If that ever proves to be a problem in practice, the fix is a line of explanation in the detail view where the verdict is used — not a first-run overlay, which would undercut the launch the cover screen was built to make feel deliberate.
 
@@ -486,3 +492,4 @@ Secondary, measurable without any analytics backend:
 | 1.10 | 2026-08-23 | Blood orange added as its own card, the first application of the §7.1 card-or-variety test; coverage now 33 fruits |
 | 1.11 | 2026-08-23 | §8.2: corrected the boundary convention and recorded that it is now enforced; §10: tests now block the build |
 | 1.12 | 2026-08-23 | Closed all three open questions in §12; cantaloupe named to variety, guava renamed Tropical guava to disambiguate it from feijoa |
+| 1.13 | 2026-08-23 | Launch region renamed Southern California to California, matching how its windows were already sourced; §6.3 reframed around supply sheds, collapsing milestone 4 to two regions |

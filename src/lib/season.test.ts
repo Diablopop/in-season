@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { covers, resolve, resolveVariety, toMonthDay } from './season'
 import type { SeasonWindow } from './types'
-import apple from '../data/regions/socal/apple.json'
+import apple from '../data/regions/california/apple.json'
 
 const wrapping: SeasonWindow = { verdict: 'peak', start: '11-01', end: '05-15' }
 
@@ -43,7 +43,7 @@ describe('resolve', () => {
   })
 })
 
-describe('socal apple data', () => {
+describe('california apple data', () => {
   const at = (md: string) => resolve(apple.windows as SeasonWindow[], md).verdict
 
   it('resolves the shape of the apple year at fruit level', () => {

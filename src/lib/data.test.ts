@@ -6,7 +6,7 @@ import { entryWindows, resolveEntry, standoutVarieties, varietyHeadline } from '
 import type { Fruit, RegionItem, SeasonWindow, Verdict } from './types'
 
 const FRUITS_DIR = 'src/data/fruits'
-const REGION_DIR = 'src/data/regions/socal'
+const REGION_DIR = 'src/data/regions/california'
 const VERDICTS: Verdict[] = ['peak', 'in-season', 'storage', 'imported', 'skip']
 
 const read = <T,>(dir: string, file: string): T =>
