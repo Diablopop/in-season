@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Cover artwork, so it is on its way before the stylesheet asks for it.
+         Public paths are not content-hashed, so these can be written here. -->
+    <link rel="preload" as="image" href="/img/cover/paper.webp" />
+    <link rel="preload" as="image" href="/img/cover/apple.webp" />
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
@@ -61,12 +66,37 @@
         align-items: center;
         justify-content: center;
         gap: 0.375rem;
-        background: var(--cover-paper);
+        /* The flat cream stays underneath as the fallback: if the texture
+           fails to load the cover is plain paper-coloured, not broken. */
+        background-color: var(--cover-paper);
+        background-image: url('/img/cover/paper.webp');
+        background-size: cover;
+        background-position: center;
         text-align: center;
         /* Shorthand order is duration then delay: hold, then fade. The whole
            thing is over in 900ms. Fill mode forwards is what makes this safe
            without script — the end state persists. */
         animation: cover-out var(--cover-fade) ease-in var(--cover-hold) forwards;
+      }
+
+      /*
+        Sized against the viewport with a ceiling, so it holds its proportion
+        on a small phone without becoming absurd on a large one. The master is
+        trimmed to the fruit, so this is the apple's own size rather than the
+        size of transparent margin around it.
+      */
+      .cover__apple {
+        /*
+          Three ceilings, and the smallest wins. 52vw sets the proportion, 250px
+          stops it growing absurd on a large phone, and 36vh keeps the whole
+          composition inside a short screen — a phone held in landscape is still
+          a phone and still gets a cover, and without the last term the apple,
+          wordmark and date come to about 376px of content in a 375px viewport.
+          Sizing by width alone keeps the aspect ratio intact.
+        */
+        width: min(52vw, 250px, 36vh);
+        height: auto;
+        margin-bottom: 1.5rem;
       }
 
       /* Not an h1: the app has one, and two would be a worse outline for the
@@ -120,6 +150,7 @@
   </head>
   <body>
     <div class="cover" id="cover" aria-hidden="true">
+      <img class="cover__apple" src="/img/cover/apple.webp" alt="" width="922" height="1024" />
       <p class="cover__title">In Season</p>
       <p class="cover__meta" id="cover-meta"></p>
     </div>

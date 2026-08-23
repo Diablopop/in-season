@@ -4,7 +4,7 @@
 **Owner:** Andrew Schauer
 **Version:** 1.1
 **Last updated:** 2026-08-22
-**Status:** Active — milestone 1 shipped, 2 and 3 not started
+**Status:** Active — milestones 1 and 2 shipped, 3 not started
 **Intended use:** Human reference and AI guidance
 
 ---
@@ -92,10 +92,14 @@ Both delivered to `asset-handoff/` on 2026-08-22.
 
 Following the existing convention in `scripts/build-images.mjs` — masters stay outside the repository, WebP outputs are committed at quality 82.
 
-* `public/img/splash/paper.webp` — flattened, no alpha
-* `public/img/splash/apple.webp` — alpha preserved, emitted at 512 and 1024
+Emitted by `scripts/build-cover.mjs` (`npm run cover`), a local authoring step — the WebP files are committed and deploys use them as-is.
 
-Estimated added precache cost: ~250–300KB against a current budget of roughly 1.5–2MB. Not a constraint.
+* `public/img/cover/paper.webp` — 874 × 1312, 24KB. Rotated to portrait, alpha flattened.
+* `public/img/cover/apple.webp` — 922 × 1024, 118KB. Trimmed to the fruit, alpha preserved.
+
+Actual added precache cost: 144KB, taking the total from 71 entries at 1587KB to 73 at 1732KB. Well inside budget.
+
+**The paper is rotated to portrait in the build step.** Covering a tall screen from a landscape master scales until the *height* fills and then discards two thirds of the width — 3.2×, retaining about 32% of the grain. Portrait only has to cover the width: 2.1×, retaining about 58%. Measured as high-frequency energy after subtracting a blur, against a native reference of 1.047: landscape 0.334, portrait 0.611. It is shipped at its own resolution rather than upscaled at build time, since the browser performs the same interpolation on the way to the screen and a pre-upscaled file would only be larger.
 
 ---
 
@@ -150,8 +154,10 @@ The PRD currently contradicts this feature in three places. Each should be amend
 | # | Scope | Testable when |
 |---|---|---|
 | 1 ✅ | Mechanics — flat cream, live type, no imagery, font preload | Splash appears, holds, fades, skips on tap, clears with JavaScript disabled, absent under reduced motion |
-| 2 | Artwork — paper texture, apple, final typography and spacing | Renders correctly at 375px, 430px, and desktop widths, in browser and installed |
+| 2 ✅ | Artwork — paper texture, apple, final typography and spacing | Renders correctly at 375px, 430px, and desktop widths, in browser and installed |
 | 3 | Documentation — PRD §3.1, §8.6, §11 amendments | PRD no longer contradicts the shipped app |
+
+**Milestone 2 verified 2026-08-22.** Composition follows the concept art — apple above the wordmark, date and region beneath. The apple is sized `min(52vw, 250px, 36vh)`: the first two set proportion and a ceiling, the third keeps the composition inside a short screen. Without that third term a phone held in landscape needs about 376px of content in a 375px viewport. Confirmed unchanged at 375 × 812 (195px) and correctly constrained at 667 × 375 (135px, everything fits). Note that a landscape phone could not be emulated directly — above 768px wide the tooling reports a mouse, which is the desktop path — so that case is reasoned and arithmetic-checked rather than observed.
 
 **Milestone 1 verified 2026-08-22.** The animation was seeked frame by frame rather than timed against the wall clock: opacity holds at 1.00 through the hold, then eases to 0.00 at the end, and `visibility` flips to hidden at the end. Fonts fetch at 14ms and complete at 16ms, so the serif is available well before the hold expires. Outstanding for Andrew: the installed-PWA cold launch, and reduced motion on a real device.
 
@@ -178,3 +184,4 @@ The PRD currently contradicts this feature in three places. Each should be amend
 | 1.2 | 2026-08-22 | Preload alone did not stop the font swap; cover now declares its own families inline at font-display: block |
 | 1.3 | 2026-08-22 | D7 added — cover is limited to touch devices and never shown on desktop |
 | 1.4 | 2026-08-22 | Hold lengthened to 500ms after Andrew felt it; total 1050ms |
+| 1.5 | 2026-08-22 | Milestone 2 shipped — paper, apple, composition, and the short-screen ceiling |
