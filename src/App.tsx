@@ -33,12 +33,21 @@ export function App() {
 
   return (
     <main className="app">
-      <header className="masthead">
-        <h1 className="masthead__title">In Season</h1>
-        <p className="masthead__meta">
-          {LONG_DATE.format(today)} · {region.name}
-        </p>
-      </header>
+      {/*
+        The masthead is a claim about today, not a page title. On a fruit that is
+        out of season it is the first thing read, and it contradicts the verdict
+        directly beneath it — and on the credits page it is simply the wrong
+        subject. Both of those views carry their own heading and back link, so
+        neither loses orientation by dropping this.
+      */}
+      {!selected && !showCredits && (
+        <header className="masthead">
+          <h1 className="masthead__title">In Season</h1>
+          <p className="masthead__meta">
+            {LONG_DATE.format(today)} · {region.name}
+          </p>
+        </header>
+      )}
 
       {showCredits ? (
         <Credits />

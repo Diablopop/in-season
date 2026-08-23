@@ -10,7 +10,7 @@
 
 .group__label {
   font-family: var(--font-sans);
-  font-size: var(--text-xs);
+  font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;

@@ -38,7 +38,7 @@ export function Credits() {
     <article className="credits">
       <a className="detail__back" href="#/">← All fruit</a>
 
-      <h2 className="credits__title">Art credits</h2>
+      <h1 className="credits__title">In Season illustrations</h1>
 
       <p className="credits__intro">
         When available, illustrations are from the{' '}

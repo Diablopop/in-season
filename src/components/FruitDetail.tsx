@@ -39,7 +39,7 @@ export function FruitDetail({ entry, md }: { entry: CatalogEntry; md: MonthDay }
           <img src={`/img/fruits/640/${fruit.slug}.webp`} alt="" width={640} height={640} />
         </div>
         <div>
-          <h2 className="detail__name">{fruit.name}</h2>
+          <h1 className="detail__name">{fruit.name}</h1>
           {fruit.botanicalName && (
             <p className="detail__botanical">{fruit.botanicalName}</p>
           )}
