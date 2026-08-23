@@ -2,7 +2,7 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.11
+**Version:** 1.12
 **Last updated:** 2026-08-23
 **Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
@@ -455,11 +455,17 @@ Secondary, measurable without any analytics backend:
 
 ## 12. Open questions
 
-1. Should farmers-market-only fruits (cherimoya, loquat, guava, jujube) be marked as such, since they rarely appear in mainstream grocery stores? Marking them may be more useful than omitting them.
-2. Art direction: §8.5 recommends the USDA watercolors, but the choice is deliberately deferred — placeholders are in place and the format, sizes, and paths are fixed, so the decision can be made after milestone 2 shows the grid at real density. Hand-drawn pixel art in Aseprite is explicitly **not** the plan; 32 hand-created sprites is more production work than this app justifies.
-3. Does the app need an About screen explaining the verdict system, or should the verdicts be self-explanatory? Leaning toward a small, dismissible first-run explanation rather than a separate screen.
+**None outstanding as of 2026-08-23.** All three original questions are resolved below, along with one closed earlier.
 
-**Closed:** whether navel and Valencia oranges share a card — resolved in §7.1, and re-examined on 2026-08-23 when Andrew queried it. The split stands, on a stronger argument than the one originally recorded: their opposite seasons mean a merged card would read `Peak` or `In season` every day of the year. The same review added Cara Cara as a variety of the navel card and set the card-or-variety test for cultivars of one species.
+### Resolved
+
+**Marking farmers-market-only fruits** — no. Andrew's reasoning, 2026-08-23: it adds complexity, and the framing is wrong. A shopper who cannot find cherimoya should come away feeling their grocery store is not carrying enough of the good stuff, not feeling they are in the wrong place. The app describes what is worth buying; where to buy it is the shopper's problem and a matter of local knowledge this app has no way to hold.
+
+**Art direction** — closed by events. The USDA Pomological Watercolor Collection was adopted, and every one of the 33 fruits now ships a real plate rather than a placeholder. Painters are credited per fruit in the detail view and collectively on the illustrations page, and `art-sources.md` records source and attribution for each. The generated supplements are disclosed as generated, per the policy in §8.5.
+
+**An About screen explaining the verdict system** — not needed. Andrew's call, 2026-08-23: the verdicts stand on their own. Recorded with the counter-argument, so a future reader knows it was weighed rather than missed: `From storage` is both the verdict carrying the product's differentiating insight and the one most open to misreading, since without context it can read as a warning that the fruit is old rather than as "this is normal, the flavour has just faded." If that ever proves to be a problem in practice, the fix is a line of explanation in the detail view where the verdict is used — not a first-run overlay, which would undercut the launch the cover screen was built to make feel deliberate.
+
+**Whether navel and Valencia oranges share a card** — resolved in §7.1, and re-examined on 2026-08-23 when Andrew queried it. The split stands, on a stronger argument than the one originally recorded: their opposite seasons mean a merged card would read `Peak` or `In season` every day of the year. The same review added Cara Cara as a variety of the navel card and set the card-or-variety test for cultivars of one species.
 
 ---
 
@@ -479,3 +485,4 @@ Secondary, measurable without any analytics backend:
 | 1.9 | 2026-08-23 | §7.1: recorded the seasonal argument for keeping citrus types separate, and the card-or-variety test for cultivars of one species; Cara Cara added as a navel variety |
 | 1.10 | 2026-08-23 | Blood orange added as its own card, the first application of the §7.1 card-or-variety test; coverage now 33 fruits |
 | 1.11 | 2026-08-23 | §8.2: corrected the boundary convention and recorded that it is now enforced; §10: tests now block the build |
+| 1.12 | 2026-08-23 | Closed all three open questions in §12; cantaloupe named to variety, guava renamed Tropical guava to disambiguate it from feijoa |

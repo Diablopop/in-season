@@ -21,7 +21,7 @@
 | Fig               | USDA Pomological Watercolor Collection | Elsie Lower Pomeroy, 1882 - 1971     |
 | Grape             | USDA Pomological Watercolor Collection | Louis C. C. Krieger, 1873 - 1940     |
 | Grapefruit        | USDA Pomological Watercolor Collection | Royal Charles Steadman, 1875 - 1964  |
-| Guava             | USDA Pomological Watercolor Collection | Amanda Almira Newton, c. 1860 - 1943 |
+| Tropical guava    | USDA Pomological Watercolor Collection | Amanda Almira Newton, c. 1860 - 1943 |
 | Kiwi              | AI Generated                           |                                      |
 | Kumquat           | AI Generated                           |                                      |
 | Lemon             | USDA Pomological Watercolor Collection | Louis C. C. Krieger, 1873 - 1940     |
