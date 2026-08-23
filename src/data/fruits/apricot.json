@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Look for deep orange, not pale yellow — a pale apricot was picked too early and will never sweeten. It should smell like an apricot and give slightly at the seam.",
   "storage": "Ripen on the counter, then refrigerate. Cold stops the ripening permanently.",
-  "ripensAfterPicking": true
+  "ripensAfterPicking": true,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Royal Charles Steadman",
+    "artistDates": "1875–1964"
+  }
 }

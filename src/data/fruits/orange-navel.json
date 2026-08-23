@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Heavy for its size with firm, tight skin. Surface russeting is cosmetic. A light fruit is a dry fruit.",
   "storage": "Counter for a week, refrigerated for up to a month.",
-  "ripensAfterPicking": false
+  "ripensAfterPicking": false,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Royal Charles Steadman",
+    "artistDates": "1875–1964"
+  }
 }

@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Look for a silvery bloom on the skin — that waxy coating rubs off with handling and its presence means the berries have been handled gently. Firm, dry, and uniformly deep blue.",
   "storage": "Refrigerate unwashed for up to a week.",
-  "ripensAfterPicking": false
+  "ripensAfterPicking": false,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "James Marion Shull",
+    "artistDates": "1872–1948"
+  }
 }

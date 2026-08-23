@@ -5,5 +5,8 @@
   "category": "fruit",
   "selection": "A plum-apricot cross, sold under variety names like Dapple Dandy and Flavor King. Look for give at the tip and a heavy feel; skin color varies wildly by variety and means little.",
   "storage": "Counter to ripen, then refrigerate.",
-  "ripensAfterPicking": true
+  "ripensAfterPicking": true,
+  "credit": {
+    "source": "AI generated"
+  }
 }

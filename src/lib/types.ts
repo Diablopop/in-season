@@ -42,6 +42,17 @@ export interface Variety {
   note?: string
 }
 
+/**
+ * Who made the artwork. The plates are public domain, but the painters did the
+ * work and are named. Generated fill-ins say so plainly rather than passing as
+ * historical plates — see PRD §8.5.
+ */
+export interface Credit {
+  source: 'USDA Pomological Watercolor Collection' | 'AI generated'
+  artist?: string
+  artistDates?: string
+}
+
 /** Region-independent content. One file per fruit. */
 export interface Fruit {
   slug: string
@@ -54,6 +65,7 @@ export interface Fruit {
   /** Counter vs refrigerator. */
   storage: string
   ripensAfterPicking: boolean
+  credit: Credit
   /**
    * Whether the card note names current standout varieties. True only where the
    * store labels varieties and the variety is the purchase decision — apples and

@@ -1,0 +1,41 @@
+.credits__title {
+  font-size: var(--text-xl);
+  line-height: 1.1;
+  margin-bottom: var(--space-3);
+}
+
+.credits__intro {
+  margin: 0;
+  max-width: 34rem;
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+}
+
+.credits__intro a { color: inherit; }
+
+/* Hairlines between painters, as elsewhere. No cards, no shadows. */
+.credits__artist {
+  border-top: var(--rule-hairline) solid var(--color-rule);
+  padding-top: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.credits__artist h3 {
+  font-size: var(--text-base);
+  margin-bottom: var(--space-1);
+}
+
+.credits__dates {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--color-ink-soft);
+}
+
+.credits__artist p {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+}
+
+.credits__generated h3 { font-style: italic; }

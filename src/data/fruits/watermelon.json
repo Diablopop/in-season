@@ -5,5 +5,8 @@
   "category": "fruit",
   "selection": "Look for a deep yellow field spot where it sat on the ground — white or pale means it was cut early. It should feel heavy and sound hollow.",
   "storage": "Counter until cut, then refrigerate. Cut melon keeps three days.",
-  "ripensAfterPicking": false
+  "ripensAfterPicking": false,
+  "credit": {
+    "source": "AI generated"
+  }
 }

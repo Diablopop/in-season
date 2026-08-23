@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Wrinkled is ripe. A smooth, glossy passion fruit is underripe and sharply acidic; heavy wrinkling means the pulp has concentrated.",
   "storage": "Counter until wrinkled, then refrigerate for up to a week.",
-  "ripensAfterPicking": true
+  "ripensAfterPicking": true,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Bertha Heiges",
+    "artistDates": "1866–1956"
+  }
 }

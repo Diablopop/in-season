@@ -5,5 +5,8 @@
   "category": "fruit",
   "selection": "Firm, glossy, deep orange, with the stem still attached where possible. The whole fruit is eaten skin and all, so avoid blemished or soft ones.",
   "storage": "Refrigerate for up to two weeks.",
-  "ripensAfterPicking": false
+  "ripensAfterPicking": false,
+  "credit": {
+    "source": "AI generated"
+  }
 }

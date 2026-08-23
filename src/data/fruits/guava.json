@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Buy firm and let it ripen — a ripe guava is fragrant several feet away and gives to gentle pressure. Green fruit will still ripen; hard green fruit with no smell may not.",
   "storage": "Counter until fragrant, then refrigerate for a few days.",
-  "ripensAfterPicking": true
+  "ripensAfterPicking": true,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Amanda Almira Newton",
+    "artistDates": "c. 1860–1943"
+  }
 }

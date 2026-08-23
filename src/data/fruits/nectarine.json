@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Smell it — a nectarine with no scent will not develop one. Look for a warm background color and give along the seam, not on the shoulders.",
   "storage": "Counter to ripen, then refrigerate. Never refrigerate a hard one.",
-  "ripensAfterPicking": true
+  "ripensAfterPicking": true,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Amanda Almira Newton",
+    "artistDates": "c. 1860–1943"
+  }
 }

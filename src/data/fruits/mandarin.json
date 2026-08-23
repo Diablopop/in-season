@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Slightly loose skin is normal and good. Heavy for its size, deep orange, with no soft spots at the stem end.",
   "storage": "Counter for several days or refrigerate for two weeks.",
-  "ripensAfterPicking": false
+  "ripensAfterPicking": false,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Royal Charles Steadman",
+    "artistDates": "1875–1964"
+  }
 }

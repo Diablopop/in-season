@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "The summer juice orange. Green patches on the skin are normal in warm weather and say nothing about ripeness — go by weight.",
   "storage": "Counter for a week, refrigerated for up to a month.",
-  "ripensAfterPicking": false
+  "ripensAfterPicking": false,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Royal Charles Steadman",
+    "artistDates": "1875–1964"
+  }
 }

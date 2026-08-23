@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Colour should run all the way to the shoulders under the cap — any white or green there means it was picked early and will not sweeten. Smell the container; ripe berries are obvious from a foot away.",
   "storage": "Refrigerate unwashed and eat within two days.",
-  "ripensAfterPicking": false
+  "ripensAfterPicking": false,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Louis C. C. Krieger",
+    "artistDates": "1873–1940"
+  }
 }

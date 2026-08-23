@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Heavy for its size, thin smooth skin, deep green with a slight give. Hard, pale, or dry-looking limes yield very little juice.",
   "storage": "Counter for a week, refrigerated for two.",
-  "ripensAfterPicking": false
+  "ripensAfterPicking": false,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Ellen Isham Schutt",
+    "artistDates": "1873–1955"
+  }
 }

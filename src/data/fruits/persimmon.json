@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Two different fruits: squat Fuyu is eaten firm like an apple, pointed Hachiya must be jelly-soft or it is unpleasantly astringent. Buying a firm Hachiya is the classic mistake.",
   "storage": "Fuyu keeps a week on the counter. Hachiya needs to ripen until it feels like a water balloon.",
-  "ripensAfterPicking": true
+  "ripensAfterPicking": true,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Amanda Almira Newton",
+    "artistDates": "c. 1860–1943"
+  }
 }

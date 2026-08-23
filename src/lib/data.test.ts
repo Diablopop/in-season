@@ -201,3 +201,39 @@ describe('variety headline', () => {
     expect(varietyHeadline(fruits[j], items[j], '07-01')).toEqual({ note: null, arc: null })
   })
 })
+
+describe('art credits', () => {
+  it('credits every fruit', () => {
+    fruits.forEach((fr) => {
+      expect(fr.credit, `${fr.slug} has no credit`).toBeDefined()
+      expect(['USDA Pomological Watercolor Collection', 'AI generated'])
+        .toContain(fr.credit.source)
+    })
+  })
+
+  it('names an artist for every collection plate', () => {
+    fruits
+      .filter((fr) => fr.credit.source === 'USDA Pomological Watercolor Collection')
+      .forEach((fr) => {
+        expect(fr.credit.artist, `${fr.slug} is uncredited`).toBeTruthy()
+      })
+  })
+
+  it('never attributes a generated image to a painter', () => {
+    fruits
+      .filter((fr) => fr.credit.source === 'AI generated')
+      .forEach((fr) => {
+        expect(fr.credit.artist, `${fr.slug} claims an artist`).toBeUndefined()
+      })
+  })
+
+  it('discloses the generated images the PRD requires flagging (§8.5)', () => {
+    const generated = fruits
+      .filter((fr) => fr.credit.source === 'AI generated')
+      .map((fr) => fr.slug)
+      .sort()
+    expect(generated).toEqual([
+      'cantaloupe', 'cherimoya', 'date', 'kiwi', 'kumquat', 'pluot', 'watermelon',
+    ])
+  })
+})

@@ -1,4 +1,5 @@
 import './App.css'
+import { Credits } from './components/Credits'
 import { FruitDetail } from './components/FruitDetail'
 import { VerdictGroup } from './components/VerdictGroup'
 import { catalog, region } from './lib/catalog'
@@ -21,6 +22,7 @@ export function App() {
   const route = useRoute()
 
   const selected = route ? catalog.find((e) => e.fruit.slug === route) : undefined
+  const showCredits = route === 'credits'
 
   const grouped = ORDER.map((verdict) => ({
     verdict,
@@ -38,7 +40,9 @@ export function App() {
         </p>
       </header>
 
-      {selected ? (
+      {showCredits ? (
+        <Credits />
+      ) : selected ? (
         <FruitDetail entry={selected} md={md} />
       ) : (
         grouped.map((g) => (
@@ -54,8 +58,8 @@ export function App() {
       <p className="colophon">
         Harvest windows are drawn from California agricultural calendars and
         describe when fruit is picked — not what a particular store has on the
-        shelf. Artwork from the USDA Pomological Watercolor Collection, public
-        domain.
+        shelf. Artwork from the USDA Pomological Watercolor Collection and, where
+        it has no plate, generated to match — <a href="#/credits">art credits</a>.
       </p>
     </main>
   )

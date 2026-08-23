@@ -5,5 +5,8 @@
   "category": "fruit",
   "selection": "Uniform pale green with no black patches. It should be firm in the store — buy it hard and let it soften at home, since a soft one in a bin has usually been bruised.",
   "storage": "Counter until it gives like a ripe avocado, then refrigerate and eat within two days.",
-  "ripensAfterPicking": true
+  "ripensAfterPicking": true,
+  "credit": {
+    "source": "AI generated"
+  }
 }

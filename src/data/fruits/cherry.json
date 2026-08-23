@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Green, pliable stems are the tell — dry brown stems mean weeks in storage. The fruit should be firm and glossy with taut skin.",
   "storage": "Refrigerate unwashed. Cherries lose sweetness fast at room temperature.",
-  "ripensAfterPicking": false
+  "ripensAfterPicking": false,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Royal Charles Steadman",
+    "artistDates": "1875–1964"
+  }
 }

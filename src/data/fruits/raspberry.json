@@ -5,5 +5,9 @@
   "category": "fruit",
   "selection": "The most fragile berry in the store. Check the underside of the container for stains, and look for uniform color with no white or moldy fruit.",
   "storage": "Refrigerate unwashed and eat within a day or two.",
-  "ripensAfterPicking": false
+  "ripensAfterPicking": false,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Frank Müller"
+  }
 }

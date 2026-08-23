@@ -5,5 +5,10 @@
   "category": "fruit",
   "selection": "Look for a dusty bloom on the skin and slight give at the tip. Hard plums soften but never gain sugar.",
   "storage": "Counter to ripen, then refrigerate.",
-  "ripensAfterPicking": true
+  "ripensAfterPicking": true,
+  "credit": {
+    "source": "USDA Pomological Watercolor Collection",
+    "artist": "Bertha Heiges",
+    "artistDates": "1866–1956"
+  }
 }
