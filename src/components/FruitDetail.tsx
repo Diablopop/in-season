@@ -35,23 +35,8 @@ export function FruitDetail({ entry, md }: { entry: CatalogEntry; md: MonthDay }
       <a className="detail__back" href="#/">← All fruit</a>
 
       <div className="detail__head">
-        <div>
-          <div className="detail__plate">
-            <img src={`/img/fruits/640/${fruit.slug}.webp`} alt="" width={640} height={640} />
-          </div>
-          {/* The plates are public domain, but the painters did the work. */}
-          <p className="detail__credit">
-            {fruit.credit.artist ? (
-              <>
-                {fruit.credit.artist}
-                {fruit.credit.artistDates && ` (${fruit.credit.artistDates})`}
-                <br />
-                {fruit.credit.source}
-              </>
-            ) : (
-              'Illustration generated in the collection’s style. Not a historical plate.'
-            )}
-          </p>
+        <div className="detail__plate">
+          <img src={`/img/fruits/640/${fruit.slug}.webp`} alt="" width={640} height={640} />
         </div>
         <div>
           <h2 className="detail__name">{fruit.name}</h2>
@@ -116,6 +101,18 @@ export function FruitDetail({ entry, md }: { entry: CatalogEntry; md: MonthDay }
             </li>
           ))}
         </ul>
+        {/* The plates are public domain, but the painters did the work. */}
+        <p>
+          {fruit.credit.artist ? (
+            <>
+              Illustration by {fruit.credit.artist}
+              {fruit.credit.artistDates && ` (${fruit.credit.artistDates})`},{' '}
+              {fruit.credit.source}.
+            </>
+          ) : (
+            <>Illustration generated in the collection’s style, not a historical plate.</>
+          )}
+        </p>
       </section>
     </article>
   )

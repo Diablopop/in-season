@@ -24,12 +24,6 @@
 }
 .detail__plate img { width: 100%; height: auto; }
 
-.detail__credit {
-  margin: var(--space-2) 0 0;
-  font-size: var(--text-xs);
-  line-height: 1.4;
-  color: var(--color-ink-soft);
-}
 
 .detail__name { font-size: var(--text-xl); line-height: 1.1; }
 

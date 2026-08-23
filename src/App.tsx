@@ -55,12 +55,15 @@ export function App() {
         ))
       )}
 
-      <p className="colophon">
-        Harvest windows are drawn from California agricultural calendars and
-        describe when fruit is picked — not what a particular store has on the
-        shelf. Artwork from the USDA Pomological Watercolor Collection and, where
-        it has no plate, generated to match — <a href="#/credits">art credits</a>.
-      </p>
+      <footer className="colophon">
+        <p>
+          Harvest windows are drawn from California agricultural calendars and
+          describe when fruit is picked, not what a particular store has on the
+          shelf. When available, artwork is from the USDA Pomological Watercolor
+          Collection (<a href="#/credits">art credits</a>).
+        </p>
+        <p>© {new Date().getFullYear()} Andrew Schauer. All rights reserved.</p>
+      </footer>
     </main>
   )
 }

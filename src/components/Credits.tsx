@@ -33,7 +33,6 @@ export function Credits() {
     .filter((e) => !e.fruit.credit.artist)
     .map((e) => e.fruit.name)
     .sort((a, b) => a.localeCompare(b))
-  const painted = groups.reduce((n, g) => n + g.fruits.length, 0)
 
   return (
     <article className="credits">
@@ -42,8 +41,7 @@ export function Credits() {
       <h2 className="credits__title">Art credits</h2>
 
       <p className="credits__intro">
-        {painted} of the {painted + generated.length} illustrations are watercolor
-        plates from the{' '}
+        When available, illustrations are from the{' '}
         <a
           href="https://www.nal.usda.gov/collections/special-collections/pomological-watercolors"
           target="_blank"
@@ -52,9 +50,7 @@ export function Credits() {
           USDA Pomological Watercolor Collection
         </a>
         , painted between 1886 and 1942 to document fruit varieties for the
-        Department of Agriculture. They are in the US public domain, so no
-        attribution is required — but the painters did the work, and they are
-        named here.
+        Department of Agriculture. They are in the US public domain.
       </p>
 
       {groups.map((g) => (
@@ -72,8 +68,7 @@ export function Credits() {
           <h3>Generated illustrations</h3>
           <p>
             The collection ends in 1942 and does not cover every fruit sold today.
-            These {generated.length} were generated to match its style, and are not
-            historical plates: {generated.join(', ')}.
+            These were generated to match the style: {generated.join(', ')}.
           </p>
         </section>
       )}

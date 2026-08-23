@@ -26,3 +26,7 @@
   color: var(--color-ink-soft);
   line-height: 1.5;
 }
+
+.colophon p { margin: 0 0 var(--space-2); }
+.colophon p:last-child { margin-bottom: 0; }
+.colophon a { color: inherit; }
