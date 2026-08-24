@@ -2,7 +2,7 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.15
+**Version:** 1.16
 **Last updated:** 2026-08-23
 **Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
@@ -128,10 +128,11 @@ Every window carries its citations in the data file, shown to the shopper in the
 
 Stated plainly, because a product whose premise is honesty should not overstate its own rigor.
 
-* **The CDFA chart's dates could not be read.** It encodes months as colored table cells rather than text, so it confirms which crops are covered but not when. **Cantaloupe, grape, and watermelon rest on it alone** and should be re-sourced.
-* **Five fruits cite a single source**: cantaloupe, grape, watermelon, guava, and passion fruit.
+* **The CDFA chart's dates could not be read.** It encodes months as colored table cells rather than text, so it confirms which crops are covered but not when. **Their California harvest windows still rest on it alone for cantaloupe, grape, and watermelon**, and should be re-sourced. Partially addressed on 2026-08-23: the winter import windows added to cantaloupe and watermelon carry their own trade sources, so those fruits are no longer single-sourced overall — but the domestic windows, which are the ones the chart was cited for, are unchanged.
+* **Three fruits cite a single source**: grape, tropical guava, and passion fruit. Cantaloupe and watermelon left this list on 2026-08-23 when their import windows were sourced, though see the caveat above.
 * **Guava, passion fruit, and mango are the weakest entries**, resting on consumer guides and grower blogs rather than agricultural reporting.
 * **Berry import windows are inferred.** The California harvest windows are well sourced; the Mexico and Chile winter windows come from general trade reporting rather than a specific citation.
+* **Melons have a domestic out-of-state gap.** Watermelon reads `Skip` in April and May, when Florida and Texas fruit is genuinely on California shelves. The verdict vocabulary has no term for out-of-state domestic supply — `Imported` would be wrong and `From storage` would be wronger — so it is left uncovered rather than mislabeled. Apple is the one place another state appears, inside a storage window where the distinction does not arise.
 * **Lime is a judgment call, not a sourced window.** It is modeled as imported from Mexico year-round because that reflects the shelf, not because a harvest calendar says so.
 * **Two sources named in earlier drafts did not work out.** UC Agriculture and Natural Resources publishes no month-specific harvest chart that could be cited, and CDPH's "Harvest of the Month" materials were not reachable in a citable form.
 
@@ -515,3 +516,4 @@ Secondary, measurable without any analytics backend:
 | 1.13 | 2026-08-23 | Launch region renamed Southern California to California, matching how its windows were already sourced; §6.3 reframed around supply sheds, collapsing milestone 4 to two regions |
 | 1.14 | 2026-08-23 | Milestone 4 rewritten with its remaining code blockers, sourcing notes, and the ways a second region differs from the first |
 | 1.15 | 2026-08-23 | Banana, pineapple, and honeydew added; §6.1 records that year-round imports are in scope. Coverage now 36 fruits |
+| 1.16 | 2026-08-23 | Winter import windows for the three melons; §5.4 updated for the sourcing that followed, and for the out-of-state gap it exposed |

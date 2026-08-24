@@ -4,7 +4,10 @@
   "sources": [
     "https://www.thepacker.com/news/produce-crops/harvest-dates-near-california-melons",
     "https://californiagrown.org/blog/how-to-tell-if-watermelons-are-ripe/",
-    "http://geisseler.ucdavis.edu/Guidelines/Melon_Production_CA.pdf"
+    "http://geisseler.ucdavis.edu/Guidelines/Melon_Production_CA.pdf",
+    "https://producebusiness.com/winter-melon-buying-guide/",
+    "https://www.freshfruitportal.com/news/2024/07/01/most-melons-in-the-united-states-come-from-guatemala/",
+    "https://www.freshplaza.com/north-america/article/9391786/honduras-import-melon-season-underway/"
   ],
   "windows": [
     {
@@ -25,6 +28,12 @@
       "start": "10-01",
       "end": "10-31",
       "origin": "California"
+    },
+    {
+      "verdict": "imported",
+      "start": "12-01",
+      "end": "05-15",
+      "origin": "Guatemala, Honduras, and Mexico"
     }
   ]
 }

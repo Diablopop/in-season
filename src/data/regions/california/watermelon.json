@@ -1,8 +1,11 @@
 {
   "slug": "watermelon",
-  "lastReviewed": "2026-08-21",
+  "lastReviewed": "2026-08-23",
   "sources": [
-    "https://cdn.agclassroom.org/ca/resources/gardens/seasonalchart.pdf"
+    "https://cdn.agclassroom.org/ca/resources/gardens/seasonalchart.pdf",
+    "https://www.ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=79279",
+    "https://www.foodrepublic.com/1620299/where-does-watermelon-come-from-winter/",
+    "https://producebusiness.com/winter-melon-buying-guide/"
   ],
   "windows": [
     {
@@ -22,6 +25,12 @@
       "start": "09-01",
       "end": "09-30",
       "origin": "California"
+    },
+    {
+      "verdict": "imported",
+      "start": "12-16",
+      "end": "03-31",
+      "origin": "Mexico"
     }
   ]
 }
