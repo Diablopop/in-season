@@ -2,7 +2,7 @@
 
 **Product:** In Season (working title)
 **Owner:** Andrew Schauer
-**Version:** 1.16
+**Version:** 1.17
 **Last updated:** 2026-08-23
 **Status:** Active — milestones 1–3 shipped, 4 and 5 not started
 **Intended use:** Human reference and AI guidance
@@ -448,8 +448,20 @@ Region picker UI, `localStorage` persistence, plus authored data for the Pacific
 Two things make this cheaper than authoring California was, and one makes it different rather than cheaper:
 
 * Winter is close to nationally uniform. From roughly November to April a Portland store and a Los Angeles store are both selling Chilean, Peruvian and Mexican fruit, so much of the file is import windows differing only in origin.
-* Citrus and the subtropicals — avocado, dates, cherimoya, tropical guava, passion fruit — have no Pacific Northwest harvest at all. They resolve to `imported`, frequently imported *from California*, which the existing `origin` field already expresses. No schema change.
+* Citrus and the subtropicals — avocado, dates, cherimoya, tropical guava, passion fruit — have no Pacific Northwest harvest at all. They resolve to `imported`, frequently *from California*. The `origin` field carries that string without a schema change, but the verdict itself does not survive the move — see the blocker below.
 * The emphasis inverts. Washington grows most of the country's apples, Bing and Rainier cherries are a Northwest institution, and Oregon owns marionberries and Hood River pears. Fruits California treats as ordinary are the headline crops there, and their windows deserve the tighter authoring §5.3 permits.
+
+**Decide this before authoring anything: the `Imported` verdict does not mean what it needs to mean outside California.** §5.2 defines it as "not locally harvested; available from Southern Hemisphere or Mexican supply," and tells the shopper "edible, usually pricier, quality is a gamble." Both halves break in Portland. A Washington store selling California strawberries in May is not selling Southern Hemisphere fruit, and the quality is not a gamble — it is often excellent. Applying the current verdict there would actively misinform, which is the one failure mode §5.4 exists to prevent.
+
+This is not an edge case in the Pacific Northwest; it is most of the year for a large share of the catalogue. The app already brushes against it in California — watermelon reads `Skip` in April and May while Florida and Texas fruit is on the shelf (§5.4) — but there it affects one fruit for two months rather than a third of the file.
+
+Three ways out, none of them free:
+
+* **Widen `Imported` and soften its shopper meaning** so it covers any fruit grown outside the region. Cheapest, and it costs the verdict its precision — "grown a long way away" and "trucked up from the next state" stop being distinguishable.
+* **Add a sixth verdict** for domestic out-of-region supply. Most accurate and most expensive: §5.2 calls the five-verdict system "the single most important design decision in the product," and a sixth badge, colour, and shopper meaning propagates through the palette, the legend, the season strip, and every region file.
+* **Lean on `origin` and leave the verdict alone**, accepting that "Imported · from California" reads oddly to a shopper in Portland who knows California is not abroad.
+
+Deciding this early is the point. It is cheap now and expensive after thirty-six fruits have been authored against the wrong assumption.
 
 **Andrew can run the §10 accuracy review himself for this region**, which is not true of most others. That is the only test that catches genuinely wrong data.
 
@@ -517,3 +529,4 @@ Secondary, measurable without any analytics backend:
 | 1.14 | 2026-08-23 | Milestone 4 rewritten with its remaining code blockers, sourcing notes, and the ways a second region differs from the first |
 | 1.15 | 2026-08-23 | Banana, pineapple, and honeydew added; §6.1 records that year-round imports are in scope. Coverage now 36 fruits |
 | 1.16 | 2026-08-23 | Winter import windows for the three melons; §5.4 updated for the sourcing that followed, and for the out-of-state gap it exposed |
+| 1.17 | 2026-08-23 | Milestone 4: recorded that the `Imported` verdict's definition and shopper meaning both break outside California, with the three ways out |
