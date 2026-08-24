@@ -19,6 +19,16 @@
   color: var(--color-ink-soft);
 }
 
+/*
+  Breathing room above the colophon rule, for the views that do not already
+  have it. On the home screen the last verdict group carries 2rem of its own
+  padding, so its content clears the rule; a detail page and the credits page
+  end on a paragraph and sat flush against it.
+*/
+.app > article {
+  margin-bottom: var(--space-8);
+}
+
 .colophon {
   border-top: var(--rule-hairline) solid var(--color-rule);
   padding-top: var(--space-3);
