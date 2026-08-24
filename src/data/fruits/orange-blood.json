@@ -3,7 +3,7 @@
   "name": "Blood orange",
   "botanicalName": "Citrus × sinensis",
   "category": "fruit",
-  "selection": "Heavy for its size with firm, tight skin. Skin blush does not predict the inside — a dull orange rind can hide the darkest flesh, and the colour comes from cold nights rather than ripeness.",
+  "selection": "Heavy for its size with firm, tight skin. Skin blush does not predict the inside — a dull orange rind can hide the darkest flesh, and the color comes from cold nights rather than ripeness.",
   "storage": "Counter for a week, refrigerated for up to a month.",
   "ripensAfterPicking": false,
   "varieties": [
@@ -17,7 +17,7 @@
       "slug": "tarocco",
       "name": "Tarocco",
       "image": null,
-      "note": "Later and sweeter, with streakier colour. What a March or April blood orange usually is."
+      "note": "Later and sweeter, with streakier color. What a March or April blood orange usually is."
     }
   ],
   "credit": {

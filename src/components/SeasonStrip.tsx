@@ -51,7 +51,7 @@ export function SeasonStrip({
 
   return (
     <figure className="strip">
-      {/* Centred on today's half-month. Half-month granularity, not day, because
+      {/* Centered on today's half-month. Half-month granularity, not day, because
           that is the resolution the data actually has. */}
       <div className="strip__marker-row" aria-hidden="true">
         <span

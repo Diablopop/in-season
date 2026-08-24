@@ -213,7 +213,7 @@ This reuses the existing note slot; it is a data capability, not a new component
 **Card or variety, for cultivars of one species.** Sweet oranges are all *Citrus × sinensis*, so botany alone cannot decide this. The test is the cultivar group and the bin the shopper is standing at.
 
 * Same group, choosing between adjacent bins → **a variety**. Cara Cara is a mutation of the Washington navel, sits beside plain navels, and the question is which navel to pick.
-* Different group, read as a different fruit → **its own card**. Blood oranges are a separate group of sweet oranges with their own flesh, flavour, price, and December-to-April window; a card of their own says `Skip` for seven months, which is real signal rather than the always-good mush a merge would produce.
+* Different group, read as a different fruit → **its own card**. Blood oranges are a separate group of sweet oranges with their own flesh, flavor, price, and December-to-April window; a card of their own says `Skip` for seven months, which is real signal rather than the always-good mush a merge would produce.
 
 ### 7.2 Detail view
 
@@ -489,7 +489,7 @@ Secondary, measurable without any analytics backend:
 
 **Art direction** — closed by events. The USDA Pomological Watercolor Collection was adopted, and every one of the 36 fruits now ships a real plate rather than a placeholder. Painters are credited per fruit in the detail view and collectively on the illustrations page, and `docs/art-sources.md` records source and attribution for each. The generated supplements are disclosed as generated, per the policy in §8.5.
 
-**An About screen explaining the verdict system** — not needed. Andrew's call, 2026-08-23: the verdicts stand on their own. Recorded with the counter-argument, so a future reader knows it was weighed rather than missed: `From storage` is both the verdict carrying the product's differentiating insight and the one most open to misreading, since without context it can read as a warning that the fruit is old rather than as "this is normal, the flavour has just faded." If that ever proves to be a problem in practice, the fix is a line of explanation in the detail view where the verdict is used — not a first-run overlay, which would undercut the launch the cover screen was built to make feel deliberate.
+**An About screen explaining the verdict system** — not needed. Andrew's call, 2026-08-23: the verdicts stand on their own. Recorded with the counter-argument, so a future reader knows it was weighed rather than missed: `From storage` is both the verdict carrying the product's differentiating insight and the one most open to misreading, since without context it can read as a warning that the fruit is old rather than as "this is normal, the flavor has just faded." If that ever proves to be a problem in practice, the fix is a line of explanation in the detail view where the verdict is used — not a first-run overlay, which would undercut the launch the cover screen was built to make feel deliberate.
 
 **Whether navel and Valencia oranges share a card** — resolved in §7.1, and re-examined on 2026-08-23 when Andrew queried it. The split stands, on a stronger argument than the one originally recorded: their opposite seasons mean a merged card would read `Peak` or `In season` every day of the year. The same review added Cara Cara as a variety of the navel card and set the card-or-variety test for cultivars of one species.
 

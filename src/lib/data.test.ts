@@ -176,11 +176,11 @@ describe('botanical names', () => {
     })
   })
 
-  it('writes them in a recognised form, with a real multiplication sign', () => {
+  it('writes them in a recognized form, with a real multiplication sign', () => {
     fruits.forEach((fr) => {
       expect(
         BINOMIAL.test(fr.botanicalName ?? ''),
-        `${fr.slug}: "${fr.botanicalName}" is not a recognised binomial form`,
+        `${fr.slug}: "${fr.botanicalName}" is not a recognized binomial form`,
       ).toBe(true)
     })
   })

@@ -12,7 +12,7 @@
 
   /* Verdicts come in pairs, because fills and text have different jobs.
      --fill-* are the graphic values: strip cells and group rules, where only
-     separation from the neighbouring block matters.
+     separation from the neighboring block matters.
      --color-* are the text values: the same hue darkened to clear WCAG AA on
      white. Hue is identical within each pair; only lightness differs.
      Always paired with a text label — never color alone (§8.4). */

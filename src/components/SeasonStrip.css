@@ -19,7 +19,7 @@
   );
 }
 
-/* Divided between months only. A mid-month verdict change reads as a colour
+/* Divided between months only. A mid-month verdict change reads as a color
    edge with no rule to help it. */
 .strip__month:not(:first-child) {
   border-left: var(--rule-hairline) solid var(--color-page);

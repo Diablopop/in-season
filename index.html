@@ -66,7 +66,7 @@
         align-items: center;
         justify-content: center;
         /* The flat cream stays underneath as the fallback: if the texture
-           fails to load the cover is plain paper-coloured, not broken. */
+           fails to load the cover is plain paper-colored, not broken. */
         background-color: var(--cover-paper);
         background-image: url('/img/cover/paper.webp');
         background-size: cover;
@@ -180,7 +180,7 @@
           var reached = getComputedStyle(el).opacity
           el.style.animation = 'none'
           el.style.opacity = reached
-          // Cancelling the animation also cancels the visibility: hidden its
+          // Canceling the animation also cancels the visibility: hidden its
           // last keyframe would have applied, so the cover would stay
           // hit-testable at opacity 0 until the backstop fired — an invisible
           // sheet swallowing the next tap. Drop it here instead.
